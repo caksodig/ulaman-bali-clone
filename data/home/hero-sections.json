@@ -1,0 +1,143 @@
+{
+  "sections": [
+    {
+      "id": "home-hero",
+      "title": "Ulaman Eco Luxury Resort",
+      "media": {
+        "type": "video",
+        "videoType": "youtube",
+        "videoId": "7moIJ0LIwPc",
+        "posterUrl": "/figure.png"
+      },
+      "seo": {
+        "alt": "Ulaman Bali luxury eco resort aerial view",
+        "title": "Welcome to Ulaman Eco Luxury Resort Bali"
+      }
+    },
+    {
+      "id": "intro-hero",
+      "title": "Nestled among the rice fields and coconut trees of Tabanan, Ulaman is only 20 minutes away from the vibrant town of Canggu.",
+      "seo": {
+        "alt": "Luxury private villa with infinity pool at Ulaman Bali",
+        "title": "Private Villas - Ulaman Bali"
+      }
+    },
+    {
+      "id": "villa-hero",
+      "title": "Private Villas",
+      "villas": [
+        {
+          "id": "villa-1",
+          "imageUrl": "/image/villas/floating-lake-1.avif",
+          "nameImage": "Floating Lake",
+          "descriptionImage": "A peaceful haven with panoramic jungle views and private infinity pool.",
+          "cta": {
+            "text": "Explore Villa Awan",
+            "link": "/villas/villa-awan"
+          },
+          "gallery": [
+            "/floating-lake-1.avif",
+            "/images/villas/villa-awan/2.jpg",
+            "/images/villas/villa-awan/3.jpg"
+          ]
+        },
+        {
+          "id": "villa-2",
+          "imageUrl": "/cocoon-jungle-1.avif",
+          "nameImage": "Cocoon Jungle",
+          "descriptionImage": "A stunning villa featuring open-air living spaces and natural stone accents.",
+          "cta": {
+            "text": "Explore Villa Surya",
+            "link": "/villas/villa-surya"
+          },
+          "gallery": [
+            "/images/villas/villa-surya/1.jpg",
+            "/images/villas/villa-surya/2.jpg",
+            "/images/villas/villa-surya/3.jpg"
+          ]
+        },
+        {
+          "id": "villa-3",
+          "imageUrl": "/images/villas/villa-candra/main.jpg",
+          "nameImage": "Avatar Tree House",
+          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "cta": {
+            "text": "Explore Villa Candra",
+            "link": "/villas/villa-candra"
+          },
+          "gallery": [
+            "/images/villas/villa-candra/1.jpg",
+            "/images/villas/villa-candra/2.jpg",
+            "/images/villas/villa-candra/3.jpg"
+          ]
+        },
+        {
+          "id": "villa-4",
+          "imageUrl": "/images/villas/villa-candra/main.jpg",
+          "nameImage": "Grand Lagoon Private Pool",
+          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "cta": {
+            "text": "Explore Villa Candra",
+            "link": "/villas/villa-candra"
+          },
+          "gallery": [
+            "/images/villas/villa-candra/1.jpg",
+            "/images/villas/villa-candra/2.jpg",
+            "/images/villas/villa-candra/3.jpg"
+          ]
+        },
+        {
+          "id": "villa-5",
+          "imageUrl": "/images/villas/villa-candra/main.jpg",
+          "nameImage": "Jungle Garden Pool",
+          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "cta": {
+            "text": "Explore Villa Candra",
+            "link": "/villas/villa-candra"
+          },
+          "gallery": [
+            "/images/villas/villa-candra/1.jpg",
+            "/images/villas/villa-candra/2.jpg",
+            "/images/villas/villa-candra/3.jpg"
+          ]
+        },
+        {
+          "id": "villa-6",
+          "imageUrl": "/images/villas/villa-candra/main.jpg",
+          "nameImage": "Ulin Poolside",
+          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "cta": {
+            "text": "Explore Villa Candra",
+            "link": "/villas/villa-candra"
+          },
+          "gallery": [
+            "/images/villas/villa-candra/1.jpg",
+            "/images/villas/villa-candra/2.jpg",
+            "/images/villas/villa-candra/3.jpg"
+          ]
+        }
+      ],
+      "seo": {
+        "alt": "Luxury private villas with infinity pool at Ulaman Bali",
+        "title": "Private Villas - Ulaman Bali"
+      }
+    },
+    {
+      "id": "gallery-hero",
+      "title": "An award-winning eco-luxury resort offering a unique hideaway experience. Embrace authenticity, balance, adn harmony with nature in healing, luxurious environtment. ",
+      "description": "We believe nature and luxury can coexist. Ulaman Eco Luxury Resort offers a secluded, lush haven with luxurious amenities and impeccable service. Immerse yourself in traditional Balinese culture and leave feeling renewed, all while minimizing your ecological footprint. Recharge your mind, body, and soul in this unique holistic retreat.",
+      "media": {
+        "type": "gallery",
+        "galleryImages": ["/home-1.avif", "/home-2.avif", "/hom-3.avif"]
+      },
+      "cta": {
+        "text": "About Us",
+        "link": "#gallery"
+      },
+      "seo": {
+        "alt": "Photo gallery of Ulaman Bali resort",
+        "title": "Gallery - Ulaman Bali"
+      }
+    }
+  ]
+}
