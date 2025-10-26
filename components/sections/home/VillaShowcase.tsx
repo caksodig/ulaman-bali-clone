@@ -3,10 +3,12 @@
 import { useRef, useState } from "react";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
 import VillaCard from "@/components/ui/villa-card";
+import type { RefObject } from "react";
 
 interface Villa {
   id: string;
   name?: string;
+  title: string;
   nameImage?: string;
   description?: string;
   descriptionImage?: string;
@@ -29,6 +31,7 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  console.log("VillaShowcase title:", title);
 
   // Check scroll position
   const checkScroll = () => {
@@ -63,8 +66,11 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
     <section className="relative py-20 md:py-32 bg-[#E8E4DC]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title - Top Center */}
-        <div ref={headerRef as any} className="text-center mb-12 md:mb-16">
-          <h2
+        <div
+          ref={headerRef as RefObject<HTMLHeadingElement>}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h1
             className={`text-2xl sm:text-3xl md:text-4xl font-light text-[#C69C4D] leading-relaxed max-w-3xl mx-auto transition-all duration-700 ${
               hasHeaderEntered
                 ? "opacity-100 translate-y-0"
@@ -72,11 +78,11 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
             }`}
           >
             {title}
-          </h2>
+          </h1>
         </div>
 
         {/* Navigation + Cards Container */}
-        <div className="relative justify-center flex max-w-6xl mx-auto">
+        <div className="relative justify-center flex pt-32 max-w-6xl mx-auto">
           {/* Navigation Buttons - Bottom Left */}
           <div
             className={`items-center gap-4 mb-8 transition-all duration-700  top-1/2 -translate-y-1/2 ${
@@ -148,11 +154,10 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
             }}
           >
             {villas.map((villa) => {
-              // ✅ Ambil semua gambar langsung dari villa.image (array)
               const allImages =
                 Array.isArray(villa.image) && villa.image.length > 0
                   ? villa.image
-                  : ["/fallback.jpg"]; // fallback kalau kosong
+                  : ["/fallback.jpg"];
 
               return (
                 <div key={villa.id} className="shrink-0 w-[320px] sm:w-[380px]">

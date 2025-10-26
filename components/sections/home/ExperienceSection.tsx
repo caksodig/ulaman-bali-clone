@@ -1,236 +1,233 @@
 "use client";
 
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { LazySectionGroup } from "@/components/ui/LazySection";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
-import type { RefObject } from "react";
 
 interface Experience {
   id: string;
   title: string;
-  category: string;
-  description: string;
   duration: string;
-  price: string;
   image: string;
-  schedule: string;
-  maxGuests: number;
-  difficulty: string;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
-interface ExperienceSectionProps {
+interface ExperienceGridProps {
   experiences: Experience[];
+  title?: string;
 }
 
-export default function ExperienceSection({
+export default function ExperienceGrid({
   experiences,
-}: ExperienceSectionProps) {
-  const [headerRef, hasHeaderEntered] = useViewportEnter({
-    threshold: 0.3,
-  });
+  title = "Book one of our special packages for a getaway you'll never forget.",
+}: ExperienceGridProps) {
+  const [headerRef, hasHeaderEntered] = useViewportEnter({ threshold: 0.3 });
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // Check scroll position
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  // Scroll functions
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -400,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 400,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-stone-50">
-      <div className="max-w-7xl mx-auto">
-        {/* SECTION HEADER */}
-        <div ref={headerRef as RefObject<HTMLDivElement>} className="text-center mb-16 md:mb-20">
-          <p
-            className={`text-sm md:text-base tracking-[0.3em] uppercase text-stone-600 font-light mb-4 transition-all duration-700 ${
+    <section className="relative py-20 md:py-32 bg-[#E8E4DC]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Title - Top Center */}
+        <div ref={headerRef as any} className="text-center mb-12 md:mb-16">
+          <h2
+            className={`text-2xl sm:text-3xl md:text-4xl font-light text-[#C69C4D] leading-relaxed max-w-3xl mx-auto transition-all duration-700 ${
               hasHeaderEntered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
             }`}
           >
-            Curated Experiences
-          </p>
-          <h2
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-stone-900 transition-all duration-700 ${
+            {title}
+          </h2>
+        </div>
+
+        {/* Navigation + Cards Container */}
+        <div className="flex relative justify-center items-center">
+          {/* Navigation Buttons - Bottom Left */}
+          <div
+            className={` items-center gap-4 mb-8 transition-all duration-700 ${
               hasHeaderEntered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
             }`}
             style={{ transitionDelay: "100ms" }}
           >
-            Discover Bali
-          </h2>
-          <p
-            className={`mt-6 text-base md:text-lg text-stone-700 max-w-2xl mx-auto transition-all duration-700 ${
-              hasHeaderEntered
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-            style={{ transitionDelay: "200ms" }}
-          >
-            Immerse yourself in authentic Balinese culture through our carefully
-            crafted experiences
-          </p>
-        </div>
+            <button
+              onClick={scrollLeft}
+              disabled={!canScrollLeft}
+              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                canScrollLeft
+                  ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
+                  : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
+              }`}
+              aria-label="Scroll left"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
 
-        {/* EXPERIENCE GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={experience.id}
-              experience={experience}
-              index={index}
-            />
-          ))}
-        </div>
+            <button
+              onClick={scrollRight}
+              disabled={!canScrollRight}
+              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                canScrollRight
+                  ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
+                  : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
+              }`}
+              aria-label="Scroll right"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
 
-        {/* CTA */}
-        <div
-          className={`text-center mt-16 transition-all duration-700 ${
-            hasHeaderEntered
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
-          }`}
-          style={{ transitionDelay: "600ms" }}
-        >
-          <Link
-            href="/experience"
-            className="inline-block px-10 py-4 border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300 text-sm tracking-wider uppercase font-medium"
+          {/* Scrollable Cards Container */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={checkScroll}
+            className="flex pl-4 gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
           >
-            View All Experiences
-          </Link>
+            {experiences.map((experience, index) => (
+              <ExperienceCard
+                key={experience.id}
+                experience={experience}
+                index={index}
+                hasHeaderEntered={hasHeaderEntered}
+              />
+            ))}
+          </div>
+
+          {/* Fade gradient on right edge */}
+          <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#E8E4DC] to-transparent pointer-events-none" />
         </div>
       </div>
     </section>
   );
 }
 
-// EXPERIENCE CARD COMPONENT
+// Experience Card Component
 function ExperienceCard({
   experience,
   index,
+  hasHeaderEntered,
 }: {
   experience: Experience;
   index: number;
+  hasHeaderEntered: boolean;
 }) {
-  const [ref, hasEntered] = useViewportEnter({
-    threshold: 0.2,
-  });
+  const [ref, hasEntered] = useViewportEnter({ threshold: 0.1 });
 
   return (
     <article
-      ref={ref as RefObject<HTMLDivElement>}
-      className={`group transition-all duration-700 ease-out ${
-        hasEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      ref={ref as any}
+      className={`shrink-0 w-[300px] sm:w-[340px] group transition-all duration-700 ${
+        hasEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
+      style={{ transitionDelay: `${index * 100 + 200}ms` }}
     >
-      <Link href={`/experience/${experience.id}`} className="block">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
-          {/* IMAGE */}
-          <div className="lg:col-span-2 relative h-[280px] lg:h-[320px] overflow-hidden rounded-lg">
+      <Link href={experience.ctaLink || "#"} className="block">
+        <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+          {/* Image */}
+          <div className="relative h-[380px] sm:h-[420px] overflow-hidden">
             <Image
               src={experience.image}
               alt={experience.title}
               fill
-              loading="lazy"
-              priority={true}
               className="object-cover transition-transform duration-700 group-hover:scale-110"
-              sizes="(max-width: 1024px) 100vw, 40vw"
+              sizes="340px"
               quality={85}
             />
 
-            {/* Category Badge */}
-            <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-stone-900 text-xs tracking-wider uppercase font-medium rounded">
-              {experience.category}
-            </div>
-
-            {/* Overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
           </div>
 
-          {/* CONTENT */}
-          <div className="lg:col-span-3 flex flex-col justify-center space-y-4">
+          {/* Content Overlay - Bottom of Image */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+            {/* Duration */}
+            <p className="text-xs tracking-wider uppercase mb-2 opacity-90">
+              {experience.duration}
+            </p>
+
             {/* Title */}
-            <h3 className="text-2xl md:text-3xl font-serif text-stone-900 group-hover:text-stone-600 transition-colors">
+            <h3 className="text-xl md:text-2xl font-light leading-tight mb-4">
               {experience.title}
             </h3>
 
-            {/* Description */}
-            <p className="text-sm md:text-base text-stone-700 leading-relaxed line-clamp-3">
-              {experience.description}
-            </p>
-
-            {/* Meta Information */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="flex items-center gap-2 text-sm text-stone-600">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>{experience.duration}</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-sm text-stone-600">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <span>Max {experience.maxGuests} guests</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-sm text-stone-600">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>{experience.difficulty}</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-sm font-medium text-stone-900">
-                <span>From {experience.price}</span>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="pt-2">
-              <span className="inline-flex items-center gap-2 text-sm text-stone-900 group-hover:text-ulaman-gold transition-colors">
-                Learn More
-                <svg
-                  className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
+            {/* CTA Link */}
+            <div className="inline-flex items-center gap-2 text-[#C69C4D] hover:text-white transition-colors text-sm tracking-wider uppercase font-normal">
+              <span>{experience.ctaText || "DISCOVER"}</span>
+              <svg
+                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
             </div>
           </div>
         </div>
