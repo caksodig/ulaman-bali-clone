@@ -1,15 +1,20 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
+import VillaCard from "@/components/ui/villa-card";
 
 interface Villa {
   id: string;
-  name: string;
-  description: string;
-  image: string;
+  name?: string;
+  nameImage?: string;
+  description?: string;
+  descriptionImage?: string;
+  image?: string[];
+  cta?: {
+    text: string;
+    link: string;
+  };
   ctaText?: string;
   ctaLink?: string;
 }
@@ -17,14 +22,9 @@ interface Villa {
 interface VillaShowcaseProps {
   villas: Villa[];
   title?: string;
-  subtitle?: string;
 }
 
-export default function VillaShowcase({
-  villas,
-  title = "Discover cozy elegance, where tranquility meets Bali's serene beauty.",
-  subtitle = "Private Eco Villas",
-}: VillaShowcaseProps) {
+export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
   const [headerRef, hasHeaderEntered] = useViewportEnter({ threshold: 0.3 });
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -76,10 +76,10 @@ export default function VillaShowcase({
         </div>
 
         {/* Navigation + Cards Container */}
-        <div className="relative">
+        <div className="relative justify-center flex max-w-6xl mx-auto">
           {/* Navigation Buttons - Bottom Left */}
           <div
-            className={`flex items-center gap-4 mb-8 transition-all duration-700 ${
+            className={`items-center gap-4 mb-8 transition-all duration-700  top-1/2 -translate-y-1/2 ${
               hasHeaderEntered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
@@ -89,7 +89,7 @@ export default function VillaShowcase({
             <button
               onClick={scrollLeft}
               disabled={!canScrollLeft}
-              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 mb-4 ${
                 canScrollLeft
                   ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
                   : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
@@ -147,102 +147,37 @@ export default function VillaShowcase({
               msOverflowStyle: "none",
             }}
           >
-            {villas.map((villa, index) => (
-              <VillaCard
-                key={villa.id}
-                villa={villa}
-                index={index}
-                hasHeaderEntered={hasHeaderEntered}
-              />
-            ))}
+            {villas.map((villa) => {
+              // ✅ Ambil semua gambar langsung dari villa.image (array)
+              const allImages =
+                Array.isArray(villa.image) && villa.image.length > 0
+                  ? villa.image
+                  : ["/fallback.jpg"]; // fallback kalau kosong
+
+              return (
+                <div key={villa.id} className="shrink-0 w-[320px] sm:w-[380px]">
+                  <VillaCard
+                    title={villa.name || villa.nameImage || "Villa"}
+                    images={allImages}
+                    description={
+                      villa.description ||
+                      villa.descriptionImage ||
+                      "Luxury villa in Bali"
+                    }
+                    cta={{
+                      text: villa.cta?.text || villa.ctaText || "Discover",
+                      link: villa.cta?.link || villa.ctaLink || "#",
+                    }}
+                  />
+                </div>
+              );
+            })}
           </div>
 
           {/* Fade gradient on right edge */}
-          <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#E8E4DC] to-transparent pointer-events-none" />
+          <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#E8E4DC] to-transparent pointer-events-none" />
         </div>
       </div>
     </section>
   );
 }
-
-function VillaCard({
-  villa,
-  index,
-  hasHeaderEntered,
-}: {
-  villa: Villa;
-  index: number;
-  hasHeaderEntered: boolean;
-}) {
-  const [ref, hasEntered] = useViewportEnter({ threshold: 0.1 });
-
-  return (
-    <article
-      ref={ref as any}
-      className={`shrink-0 w-[320px] sm:w-[380px] group transition-all duration-700 ${
-        hasEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-      style={{ transitionDelay: `${index * 100 + 200}ms` }}
-    >
-      <div className="overflow-hidden">
-        {/* Image */}
-        <div className="relative h-[280px] sm:h-80 overflow-hidden">
-          <Image
-            src={villa.image}
-            alt={villa.name}
-            fill
-            className="object-cover"
-            sizes="380px"
-            quality={85}
-          />
-
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </div>
-
-        {/* Content */}
-        <div className="p-6 space-y-4">
-          {/* Villa Name */}
-          <h3 className="text-xl md:text-2xl font-light text-[#C69C4D] leading-tight">
-            {villa.name}
-          </h3>
-
-          {/* Description */}
-          <p className="text-sm text-stone-700 leading-relaxed line-clamp-3">
-            {villa.description}
-          </p>
-
-          {/* CTA Link */}
-          {villa.ctaLink && (
-            <Link
-              href={villa.ctaLink}
-              className="inline-flex items-center gap-2 text-[#C69C4D] hover:text-[#B08A3D] transition-colors group text-sm tracking-wider uppercase font-normal pt-2"
-            >
-              <span>{villa.ctaText || "DISCOVER"}</span>
-              <svg
-                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          )}
-        </div>
-      </div>
-    </article>
-  );
-}
-
-// Hide scrollbar CSS
-const style = `
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-`;

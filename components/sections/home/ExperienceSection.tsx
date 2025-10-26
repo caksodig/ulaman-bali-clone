@@ -127,6 +127,8 @@ function ExperienceCard({
               src={experience.image}
               alt={experience.title}
               fill
+              loading="lazy"
+              priority={true}
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 1024px) 100vw, 40vw"
               quality={85}

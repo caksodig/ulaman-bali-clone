@@ -24,97 +24,94 @@
     },
     {
       "id": "villa-hero",
-      "title": "Private Villas",
+      "title": "Discover cozy elegance, where tranquility meets Bali’s serene beauty.",
       "villas": [
         {
           "id": "villa-1",
-          "imageUrl": "/image/villas/floating-lake-1.avif",
+          "imageUrl": [
+            "/image/villas/floating-lake-1.avif",
+            "/image/villas/floating-lake-2.avif",
+            "/image/villas/floating-lake-3.avif"
+          ],
           "nameImage": "Floating Lake",
-          "descriptionImage": "A peaceful haven with panoramic jungle views and private infinity pool.",
+          "descriptionImage": "A luxurious floating villa on Ulaman's bio-filtered lake.",
           "cta": {
-            "text": "Explore Villa Awan",
-            "link": "/villas/villa-awan"
-          },
-          "gallery": [
-            "/floating-lake-1.avif",
-            "/images/villas/villa-awan/2.jpg",
-            "/images/villas/villa-awan/3.jpg"
-          ]
+            "text": "Discover",
+            "link": "/rooms"
+          }
         },
         {
           "id": "villa-2",
-          "imageUrl": "/cocoon-jungle-1.avif",
-          "nameImage": "Cocoon Jungle",
-          "descriptionImage": "A stunning villa featuring open-air living spaces and natural stone accents.",
+          "imageUrl": [
+            "/image/villas/cocoon-jungle-1.avif",
+            "/image/villas/cocoon-jungle-2.avif",
+            "/image/villas/cocoon-jungle-3.avif",
+            "/image/villas/cocoon-jungle-4.avif"
+          ],
+          "nameImage": "Cocooon Jungle",
+          "descriptionImage": "Indulge in an unparalleled blend of exotic elegance and coziness.",
           "cta": {
-            "text": "Explore Villa Surya",
-            "link": "/villas/villa-surya"
-          },
-          "gallery": [
-            "/images/villas/villa-surya/1.jpg",
-            "/images/villas/villa-surya/2.jpg",
-            "/images/villas/villa-surya/3.jpg"
-          ]
+            "text": "Discover",
+            "link": "/rooms"
+          }
         },
         {
           "id": "villa-3",
-          "imageUrl": "/images/villas/villa-candra/main.jpg",
-          "nameImage": "Avatar Tree House",
-          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "imageUrl": [
+            "/image/villas/avatar-tree-house-1.avif",
+            "/image/villas/avtar-tree-house-2.avif",
+            "/image/villas/avtar-tree-house-3.avif"
+          ],
+          "nameImage": "Avatar Tree House ",
+          "descriptionImage": "Experience luxury in an avatar-inspired sky villa with 180 views .",
           "cta": {
-            "text": "Explore Villa Candra",
-            "link": "/villas/villa-candra"
-          },
-          "gallery": [
-            "/images/villas/villa-candra/1.jpg",
-            "/images/villas/villa-candra/2.jpg",
-            "/images/villas/villa-candra/3.jpg"
-          ]
+            "text": "Discover",
+            "link": "/rooms"
+          }
         },
         {
           "id": "villa-4",
-          "imageUrl": "/images/villas/villa-candra/main.jpg",
-          "nameImage": "Grand Lagoon Private Pool",
-          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "imageUrl": [
+            "/image/villas/grand-lagoon-1.avif",
+            "/image/villas/grand-lagoon-2.avif",
+            "/image/villas/grand-lagoon-3.avif",
+            "/image/villas/grand-lagoon-4.avif"
+          ],
+          "nameImage": "Grand Lagoon Private Pool ",
+          "descriptionImage": "Indulge in an excluisive riverside villa with jungle lagoon views .",
           "cta": {
-            "text": "Explore Villa Candra",
-            "link": "/villas/villa-candra"
-          },
-          "gallery": [
-            "/images/villas/villa-candra/1.jpg",
-            "/images/villas/villa-candra/2.jpg",
-            "/images/villas/villa-candra/3.jpg"
-          ]
+            "text": "Discover",
+            "link": "/rooms"
+          }
         },
         {
           "id": "villa-5",
-          "imageUrl": "/images/villas/villa-candra/main.jpg",
-          "nameImage": "Jungle Garden Pool",
-          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "imageUrl": [
+            "/image/villas/jungle-garden-1.avif",
+            "/image/villas/jungle-garden-2.avif",
+            "/image/villas/jungle-garden-3.avif"
+          ],
+          "nameImage": "Jungle Garden Pool ",
+          "descriptionImage": "An ultimate private pool retreat at Ulaman .",
           "cta": {
-            "text": "Explore Villa Candra",
-            "link": "/villas/villa-candra"
-          },
-          "gallery": [
-            "/images/villas/villa-candra/1.jpg",
-            "/images/villas/villa-candra/2.jpg",
-            "/images/villas/villa-candra/3.jpg"
-          ]
+            "text": "Discover",
+            "link": "/rooms"
+          }
         },
         {
           "id": "villa-6",
-          "imageUrl": "/images/villas/villa-candra/main.jpg",
-          "nameImage": "Ulin Poolside",
-          "descriptionImage": "Experience intimate luxury surrounded by lush tropical gardens.",
+          "imageUrl": [
+            "/image/villas/ulin-poolside-1.avif",
+            "/image/villas/ulin-poolside-2.avif",
+            "/image/villas/ulin-poolside-3.avif",
+            "/image/villas/ulin-poolside-4.avif"
+          ],
+          "nameImage": "Ulin Poolside ",
+          "descriptionImage": "A luxurious jungle ground-floor oasis with direct access to the infinity pool.",
           "cta": {
-            "text": "Explore Villa Candra",
-            "link": "/villas/villa-candra"
-          },
-          "gallery": [
-            "/images/villas/villa-candra/1.jpg",
-            "/images/villas/villa-candra/2.jpg",
-            "/images/villas/villa-candra/3.jpg"
-          ]
+            "text": "Discover",
+            "link": "/rooms"
+          }
         }
       ],
       "seo": {
