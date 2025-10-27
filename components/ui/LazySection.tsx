@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, ElementType } from "react";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
 
 interface LazySectionProps {
@@ -17,7 +17,7 @@ interface LazySectionProps {
     | "none";
   delay?: number;
   duration?: number;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
 }
 
 /**
@@ -104,7 +104,7 @@ interface LazySectionGroupProps {
   animationType?: LazySectionProps["animationType"];
   staggerDelay?: number;
   baseDuration?: number;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
 }
 
 export function LazySectionGroup({

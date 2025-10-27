@@ -4,25 +4,10 @@ import { useRef, useState } from "react";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
 import VillaCard from "@/components/ui/villa-card";
 import type { RefObject } from "react";
-
-interface Villa {
-  id: string;
-  name?: string;
-  title: string;
-  nameImage?: string;
-  description?: string;
-  descriptionImage?: string;
-  image?: string[];
-  cta?: {
-    text: string;
-    link: string;
-  };
-  ctaText?: string;
-  ctaLink?: string;
-}
+import type { VillaShowcase } from "@/types/content";
 
 interface VillaShowcaseProps {
-  villas: Villa[];
+  villas: VillaShowcase[];
   title?: string;
 }
 
@@ -63,7 +48,7 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
   };
 
   return (
-    <section className="relative py-20 md:py-32 bg-[#E8E4DC]">
+    <section className="relative py-20 md:py-32 bg-[#EFEBE2]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title - Top Center */}
         <div
@@ -82,10 +67,10 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
         </div>
 
         {/* Navigation + Cards Container */}
-        <div className="relative justify-center flex pt-32 max-w-6xl mx-auto">
+        <div className="relative flex max-w-6xl mx-auto justify-center items-center">
           {/* Navigation Buttons - Bottom Left */}
           <div
-            className={`items-center gap-4 mb-8 transition-all duration-700  top-1/2 -translate-y-1/2 ${
+            className={`gap-4 mb-8 transition-all duration-700  top-1/2 -translate-y-1/2 ${
               hasHeaderEntered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"

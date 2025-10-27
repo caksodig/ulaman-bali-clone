@@ -3,30 +3,27 @@
 /* ==============================
    THEME TOKENS (custom variables)
    ============================== */
-@theme {
+/* @theme {
   --font-heading: var(--font-americana);
   --font-body: var(--font-basis);
+} */
+html {
+  @apply scroll-smooth;
+  font-family: var(--font-basis);
 }
 
-@layer base {
-  html {
-    @apply scroll-smooth;
-  }
+body {
+  @apply antialiased bg-[#EFEBE2] text-[#343E35];
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  body {
-    @apply antialiased bg-[#EFEBE2] text-[#343E35];
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: var(--font-body);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-heading), Georgia, "Times New Roman", serif;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-americana);
 }

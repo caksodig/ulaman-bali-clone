@@ -49,7 +49,7 @@ export default function IntroSection({ data }: IntroSectionProps) {
     <LazySection
       animationType="fade"
       threshold={0.1}
-      className="relative py-32 overflow-hidden"
+      className="relative py-32 overflow-hidden bg-[#EFEBE2]"
     >
       <div
         ref={ref}

@@ -92,9 +92,16 @@ export interface IntroSectionProps {
 
 export interface VillaShowcase {
   id: string;
-  name: string;
-  description: string;
-  image: string;
+  name?: string;
+  title?: string;
+  nameImage?: string;
+  description?: string;
+  descriptionImage?: string;
+  image?: string[];
+  cta?: {
+    text: string;
+    link: string;
+  };
   ctaText?: string;
   ctaLink?: string;
 }
@@ -102,13 +109,13 @@ export interface VillaShowcase {
 export interface VillaShowcaseProps {
   villas: VillaShowcase[];
   title?: string;
-  subtitle?: string;
 }
 
 // Full villa data (for detail pages)
 export interface Villa {
   id: string;
   name: string;
+  title: string;
   tagline?: string;
   description: string;
   size: string;

@@ -2,8 +2,9 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
+import AnimatedLink from "@/components/ui/animated-link";
 
 interface Experience {
   id: string;
@@ -58,7 +59,7 @@ export default function ExperienceGrid({
   };
 
   return (
-    <section className="relative py-20 md:py-32 bg-[#E8E4DC]">
+    <section className="relative py-20 md:py-32 bg-[#EFEBE2]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title - Top Center */}
         <div ref={headerRef as any} className="text-center mb-12 md:mb-16">
@@ -74,10 +75,10 @@ export default function ExperienceGrid({
         </div>
 
         {/* Navigation + Cards Container */}
-        <div className="flex relative justify-center items-center">
+        <div className="flex relative justify-center items-center md:pl-32">
           {/* Navigation Buttons - Bottom Left */}
           <div
-            className={` items-center gap-4 mb-8 transition-all duration-700 ${
+            className={`md:block hidden items-center gap-4 mb-8 transition-all duration-700 ${
               hasHeaderEntered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
@@ -87,7 +88,7 @@ export default function ExperienceGrid({
             <button
               onClick={scrollLeft}
               disabled={!canScrollLeft}
-              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 mb-4 ${
                 canScrollLeft
                   ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
                   : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
@@ -156,7 +157,7 @@ export default function ExperienceGrid({
           </div>
 
           {/* Fade gradient on right edge */}
-          <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#E8E4DC] to-transparent pointer-events-none" />
+          <div className="md:block hidden absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#E8E4DC] to-transparent pointer-events-none" />
         </div>
       </div>
     </section>
@@ -174,6 +175,7 @@ function ExperienceCard({
   hasHeaderEntered: boolean;
 }) {
   const [ref, hasEntered] = useViewportEnter({ threshold: 0.1 });
+  const router = useRouter();
 
   return (
     <article
@@ -183,8 +185,11 @@ function ExperienceCard({
       }`}
       style={{ transitionDelay: `${index * 100 + 200}ms` }}
     >
-      <Link href={experience.ctaLink || "#"} className="block">
-        <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+      <div
+        onClick={() => router.push(experience.ctaLink || "#")}
+        className="block"
+      >
+        <div className="rounded-lg overflow-hidden transition-all duration-300">
           {/* Image */}
           <div className="relative h-[380px] sm:h-[420px] overflow-hidden">
             <Image
@@ -201,7 +206,7 @@ function ExperienceCard({
           </div>
 
           {/* Content Overlay - Bottom of Image */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+          <div className="text-white">
             {/* Duration */}
             <p className="text-xs tracking-wider uppercase mb-2 opacity-90">
               {experience.duration}
@@ -213,25 +218,12 @@ function ExperienceCard({
             </h3>
 
             {/* CTA Link */}
-            <div className="inline-flex items-center gap-2 text-[#C69C4D] hover:text-white transition-colors text-sm tracking-wider uppercase font-normal">
+            <AnimatedLink href="#" className="font-normal">
               <span>{experience.ctaText || "DISCOVER"}</span>
-              <svg
-                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </div>
+            </AnimatedLink>
           </div>
         </div>
-      </Link>
+      </div>
     </article>
   );
 }

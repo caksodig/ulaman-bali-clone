@@ -138,13 +138,13 @@
     },
     {
       "id": "experience-hero",
-      "title": "An award-winning eco-luxury resort offering a unique hideaway experience. Embrace authenticity, balance, adn harmony with nature in healing, luxurious environtment. ",
+      "title": "Book one of our special packages for a getaway you’ll never forget.",
       "experiences": [
         {
           "id": "exp-1",
-          "title": "Floating Breakfast by the Lagoon",
-          "duration": "2 Hours Experience",
-          "image": "/image/experiences/floating-breakfast.jpg",
+          "title": "The Avatar Experience",
+          "duration": "3 Days / 2 Nights",
+          "image": "/image/Experience/avatar-experience.avif",
           "ctaText": "Discover",
           "ctaLink": "/experiences/floating-breakfast"
         },
@@ -152,41 +152,9 @@
           "id": "exp-2",
           "title": "Private Yoga by the Jungle",
           "duration": "1 Hour Session",
-          "image": "/image/experiences/private-yoga.jpg",
+          "image": "/image/Experience/honeymoon-experience.avif",
           "ctaText": "Discover",
           "ctaLink": "/experiences/private-yoga"
-        },
-        {
-          "id": "exp-3",
-          "title": "Romantic Dinner Under the Stars",
-          "duration": "Evening Experience",
-          "image": "/image/experiences/romantic-dinner.jpg",
-          "ctaText": "Discover",
-          "ctaLink": "/experiences/romantic-dinner"
-        },
-        {
-          "id": "exp-4",
-          "title": "Balinese Cooking Class",
-          "duration": "Half Day Experience",
-          "image": "/image/experiences/cooking-class.jpg",
-          "ctaText": "Discover",
-          "ctaLink": "/experiences/cooking-class"
-        },
-        {
-          "id": "exp-5",
-          "title": "Coconut Oil Making Workshop",
-          "duration": "2 Hours Workshop",
-          "image": "/image/experiences/coconut-workshop.jpg",
-          "ctaText": "Discover",
-          "ctaLink": "/experiences/coconut-workshop"
-        },
-        {
-          "id": "exp-6",
-          "title": "Nature Walk Around the Village",
-          "duration": "Morning Walk",
-          "image": "/image/experiences/nature-walk.jpg",
-          "ctaText": "Discover",
-          "ctaLink": "/experiences/nature-walk"
         }
       ]
     }

@@ -84,6 +84,7 @@ export function transformVillaData(
     .filter((villa) => villa && villa.id) // Filter invalid entries
     .map((villa) => ({
       id: villa.id,
+      title: villa.title || villa.title || "Unnamed Villa",
       name: villa.nameImage || villa.name || "Unnamed Villa",
       description:
         villa.descriptionImage || villa.description || "Luxury villa",

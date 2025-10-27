@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
+import AnimatedLink from "@/components/ui/animated-link";
 import type { RefObject } from "react";
 
 interface GallerySectionProps {
@@ -42,7 +43,7 @@ export default function GallerySection({ data }: GallerySectionProps) {
     );
 
   return (
-    <section className="relative py-0 lg:py-32 overflow-hidden">
+    <section className="relative py-0 lg:py-32 overflow-hidden bg-[#EFEBE2]">
       <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 sm:gap-11 gap-10 lg:gap-20 items-center px-4 sm:px-6 lg:px-8 ">
         {/* Left Side - Image Gallery */}
         <div className="relative w-full aspect-80/110 rounded-lg overflow-hidden shadow-md">
@@ -112,7 +113,7 @@ export default function GallerySection({ data }: GallerySectionProps) {
         <div className="flex flex-col space-y-6">
           <h2
             ref={titleRef as RefObject<HTMLHeadingElement>}
-            className={`text-lg md:text-xl lg:text-2xl font-serif text-[#C69C4D] transition-all duration-700 delay-100 ${
+            className={`text-lg md:text-xl lg:text-2xl text-[#C69C4D] transition-all duration-700 delay-100 ${
               hasTitleEntered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
@@ -140,22 +141,9 @@ export default function GallerySection({ data }: GallerySectionProps) {
                   : "opacity-0 translate-y-6"
               }`}
             >
-              <a
-                href={data.cta.link}
-                className="group relative inline-block uppercase text-[#C69C4D] rounded-md transition-colors"
-              >
-                <span className="relative">
-                  {data.cta.text}
-                  {/* Animated underline */}
-                  <span
-                    className="
-            absolute left-0 -bottom-1.5 h-0.5 w-full bg-[#C69C4D]
-            origin-left scale-x-0 group-hover:scale-x-100
-            transition-transform duration-500 ease-in-out
-          "
-                  ></span>
-                </span>
-              </a>
+              <AnimatedLink href={data.cta.link} className="uppercase">
+                {data.cta.text}
+              </AnimatedLink>
             </div>
           )}
         </div>

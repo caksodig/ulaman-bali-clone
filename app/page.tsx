@@ -1,110 +1,3 @@
-// // app/page.tsx
-// import type { Metadata } from "next";
-// import HeroUlaman from "@/components/sections/home/HeroUlaman";
-// import IntroSection from "@/components/sections/home/IntroSection";
-// import VillaShowcase from "@/components/sections/home/VillaShowcase";
-// import ExperienceSection from "@/components/sections/home/ExperienceSection";
-
-// // Import data
-// import heroData from "@/data/home/hero-sections.json";
-// import GallerySection from "@/components/sections/home/GallerySection";
-
-// // Page-specific metadata
-// export const metadata: Metadata = {
-//   title: "Home",
-//   description:
-//     "Experience authentic Balinese luxury in harmony with nature at Ulaman Eco Luxury Resort",
-//   openGraph: {
-//     title: "Ulaman Eco Luxury Resort | Bali",
-//     description: "Experience authentic Balinese luxury in harmony with nature",
-//     images: ["/images/home-og.jpg"],
-//   },
-// };
-
-// export default function HomePage() {
-//   // Get hero section data
-//   const heroSection = heroData.sections.find((s) => s.id === "home-hero");
-
-//   if (!heroSection) return <></>;
-
-//   const media = heroSection.media as {
-//     type: string;
-//     videoType?: string;
-//     videoId?: string;
-//     posterUrl?: string;
-//     imageUrl?: string;
-//     videoUrl?: string;
-//   };
-
-//   // Build intro data expected by IntroSection (IntroSection expects {tagline,title,description[],stats[]})
-//   const introRaw = heroData.sections.find((s) => s.id === "intro-hero");
-
-//   const introData = introRaw
-//     ? {
-//         title: introRaw.title ?? "",
-//         description: Array.isArray(introRaw.description)
-//           ? (introRaw.description as string[])
-//           : introRaw.description
-//           ? [introRaw.description as string]
-//           : [],
-//         // No stats in JSON currently — pass empty array so IntroSection can render safely
-//         stats: [] as { value: string; label: string }[],
-//       }
-//     : undefined;
-
-//   const galleryRaw = heroData.sections.find((s) => s.id === "gallery-hero");
-
-//   const galleryData = galleryRaw
-//     ? {
-//         title: galleryRaw.title ?? "",
-//         description: galleryRaw.description ?? "",
-//         images:
-//           (galleryRaw.media as { type: string; galleryImages: string[] })
-//             ?.galleryImages ?? [],
-//         cta: galleryRaw.cta ?? { text: "", link: "" },
-//         seo: galleryRaw.seo ?? { alt: "", title: "" },
-//       }
-//     : undefined;
-
-//   return (
-//     <>
-//       {/* HERO SECTION - No lazy loading, loads immediately */}
-//       <HeroUlaman
-//         title={heroSection.title}
-//         videoUrl={media.videoUrl}
-//         videoType={(media.videoType as "native" | "youtube") ?? undefined}
-//         videoId={media.videoId}
-//         imageUrl={media.posterUrl ?? media.imageUrl}
-//       />
-
-//       {/* INTRO SECTION - Welcome message */}
-//       {introData ? <IntroSection data={introData} /> : null}
-
-//       {galleryData ? <GallerySection data={galleryData} /> : null}
-
-//       {/* VILLA SECTION - Lazy loaded with slide-up animation */}
-//       {(() => {
-//         const villaHero = heroData.sections.find((s) => s.id === "villa-hero");
-//         const villas =
-//           villaHero?.villas?.map((villa: any) => ({
-//             id: villa.id,
-//             name: villa.nameImage,
-//             description: villa.descriptionImage,
-//             image: villa.imageUrl,
-//             ctaText: villa.cta?.text,
-//             ctaLink: villa.cta?.link,
-//           })) ?? [];
-//         return <VillaShowcase villas={villas} />;
-//       })()}
-
-//       {/* EXPERIENCE SECTION - Lazy loaded with staggered animation */}
-//       <ExperienceSection experiences={experiencesData.highlighted} />
-
-//     </>
-//   );
-// }
-
-// app/page.tsx - Optimized & Type-Safe Homepage
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -120,6 +13,10 @@ const VillaShowcase = dynamic(
     loading: () => <div className="h-96 bg-stone-50 animate-pulse" />,
   }
 );
+
+const CircularReveal = dynamic(() => import("@/components/ui/circural"), {
+  ssr: true,
+});
 
 const GallerySection = dynamic(
   () => import("@/components/sections/home/GallerySection"),
@@ -228,6 +125,31 @@ export default function HomePage() {
       {galleryData && galleryData.images.length > 0 && (
         <GallerySection data={galleryData} />
       )}
+
+      {/* CIRCULAR REVEAL SECTION - Stunning scroll animation */}
+      <CircularReveal
+        title="Experience a blend of nature, comfort and luxury like never before."
+        cta={{
+          text: "BOOK YOUR STAY",
+          link: "/reservations",
+        }}
+        image="/circular.avif"
+        backgroundColor="#E8E4DC"
+        textColor="#C69C4D"
+        scrollHeight={200}
+      >
+        {/* Content that slides up after image reveal */}
+        <div className="min-h-screen py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto text-center">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-stone-900 mb-6">
+              Your Luxury Escape Awaits
+            </h3>
+            <p className="text-base md:text-lg text-stone-700 max-w-2xl mx-auto">
+              Discover our collection of private villas and curated experiences
+            </p>
+          </div>
+        </div>
+      </CircularReveal>
 
       {/* VILLA SHOWCASE - Lazy loaded */}
       {villaData.length > 0 && (
