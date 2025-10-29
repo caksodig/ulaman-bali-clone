@@ -23,7 +23,7 @@ export default function Header({
   logoUrl = "/image/logo/logo-new.svg",
   logoText = "ULAMAN",
   navLinks = [
-    { label: "Villas", href: "/villa" },
+    { label: "Villas", href: "/rooms" },
     { label: "Spa", href: "https://riversidespabyulaman.com" },
     { label: "Dine", href: "https://earthbyulaman.com" },
     { label: "Retreats", href: "/retreats" },

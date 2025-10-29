@@ -144,8 +144,8 @@ export default function HeroUlaman({
                 <Image
                   src={imageUrl}
                   alt={`${title} poster`}
-                  width={400}
-                  height={700}
+                  width={300}
+                  height={450}
                   className="object-cover"
                   priority
                 />
@@ -154,7 +154,7 @@ export default function HeroUlaman({
               {/* close button */}
               <button
                 onClick={() => setPosterOpen(false)}
-                className="absolute top-4 right-16 text-white bg-[#C69C4D] rounded-full p-2 transition z-50"
+                className="absolute top-0 right-0 text-white bg-[#C69C4D] rounded-full p-2 transition z-50 hover:bg-[#b28844] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C69C4D]"
               >
                 ✕
               </button>

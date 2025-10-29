@@ -126,6 +126,14 @@ export default function HomePage() {
         <GallerySection data={galleryData} />
       )}
 
+      {/* VILLA SHOWCASE - Lazy loaded */}
+      {villaData.length > 0 && (
+        <VillaShowcase
+          villas={villaData}
+          title="Discover cozy elegance, where tranquility meets Bali's serene beauty."
+        />
+      )}
+
       {/* CIRCULAR REVEAL SECTION - Stunning scroll animation */}
       <CircularReveal
         title="Experience a blend of nature, comfort and luxury like never before."
@@ -139,33 +147,14 @@ export default function HomePage() {
         scrollHeight={200}
       >
         {/* Content that slides up after image reveal */}
-        <div className="min-h-screen py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-7xl mx-auto text-center">
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-stone-900 mb-6">
-              Your Luxury Escape Awaits
-            </h3>
-            <p className="text-base md:text-lg text-stone-700 max-w-2xl mx-auto">
-              Discover our collection of private villas and curated experiences
-            </p>
-          </div>
-        </div>
+        {/* EXPERIENCE GRID - Lazy loaded */}
+        {experienceData.length > 0 && (
+          <ExperienceGrid
+            experiences={experienceData}
+            title="Book one of our special packages for a getaway you'll never forget."
+          />
+        )}
       </CircularReveal>
-
-      {/* VILLA SHOWCASE - Lazy loaded */}
-      {villaData.length > 0 && (
-        <VillaShowcase
-          villas={villaData}
-          title="Discover cozy elegance, where tranquility meets Bali's serene beauty."
-        />
-      )}
-
-      {/* EXPERIENCE GRID - Lazy loaded */}
-      {experienceData.length > 0 && (
-        <ExperienceGrid
-          experiences={experienceData}
-          title="Book one of our special packages for a getaway you'll never forget."
-        />
-      )}
     </>
   );
 }

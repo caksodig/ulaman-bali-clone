@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "title": "Healing Mind, Body & Soul",
+    "subtitle": "Unveil Your True Self",
+    "durations": ["3 Nights", "5 Nights", "7 Nights"],
+    "description": "Reconnect with nature and discover your inner harmony, from our 3, 5, or 7-night wellness retreats, each designed to nourish your mind, body and soul. Experience the transformative experiences such as chakra balancing, healing rituals, spa treatments and guided wellness activities.",
+    "suitableFor": [
+      "Balance their energy",
+      "Restore inner peace and strength",
+      "Discover themself on a deeper level",
+      "Release emotional blockages"
+    ],
+    "images": [
+      "/image/retreats/healing-mind-1.avif",
+      "/image/retreats/healing2.jpg",
+      "/image/retreats/healing3.jpg",
+      "/image/retreats/healing4.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Detox & Juice Cleanse Program",
+    "subtitle": "Refresh Your Energy",
+    "durations": ["3 Nights", "5 Nights", "7 Nights"],
+    "description": "Experience a transformative detox journey through nutrient-rich juices and mindful practices designed to rejuvenate your body, reset your metabolism and enhance overall vitality.",
+    "suitableFor": [
+      "Cleanse and refresh the body",
+      "Improve energy levels",
+      "Reduce stress and fatigue",
+      "Support a healthy lifestyle"
+    ],
+    "images": [
+      "/images/retreats/detox1.jpg",
+      "/images/retreats/detox2.jpg",
+      "/images/retreats/detox3.jpg",
+      "/images/retreats/detox4.jpg"
+    ]
+  }
+]

@@ -490,3 +490,14 @@ export type {
   ExperienceCard as ExperienceCardType,
   GalleryImage as GalleryImageType,
 };
+
+interface Activity {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
+
+interface HeroActivitiesProps {
+  data: Activity[];
+}
