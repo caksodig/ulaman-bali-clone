@@ -17,11 +17,11 @@ export const RetreatIntro = ({ title, description }: RetreatIntroProps) => {
 
   return (
     <section
-      className={`bg-[#F3EFE6] text-center py-28 px-6 transition-all duration-1000 ${
+      className={`text-center py-28 px-6 transition-all duration-1000 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
-      <div className="space-y-em sm:w-fit sm:mx-auto sm:text-center max-w-[38rem] xl:max-w-[44rem]">
+      <div className="space-y-em sm:w-fit sm:mx-auto sm:text-center max-w-152 xl:max-w-176">
         <h2 className="text-2xl md:text-3xl font-serif text-[#B68745] mb-8 leading-snug">
           {title}
         </h2>

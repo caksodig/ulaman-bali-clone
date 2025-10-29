@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-// import { inter, playfair, cormorant } from "@/lib/fonts";
-import { getFontClasses } from "@/lib/fonts";
+import { americana, basisGrotesque } from "@/lib/fonts";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
@@ -85,7 +84,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html
       lang="en"
       // className={`${inter.variable} ${playfair.variable} ${cormorant.variable} scroll-smooth`}
-      className={`getFontClasses() scroll-smooth`}
+      className={`${americana.variable} ${basisGrotesque.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>

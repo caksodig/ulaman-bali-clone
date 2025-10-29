@@ -31,7 +31,7 @@ export const RetreatPrograms = ({ programs }: RetreatProgramsProps) => {
   };
 
   return (
-    <section className="bg-[#F6F2E8] py-20 px-6 md:px-12">
+    <section className="py-20 px-6 md:px-12">
       {/* Tabs */}
       <div className="flex justify-center gap-10 text-[#B68745] font-serif text-lg mb-10 border-b border-[#D6C6A3]">
         {programs.map((program, index) => (
@@ -110,13 +110,35 @@ export const RetreatPrograms = ({ programs }: RetreatProgramsProps) => {
                 onClick={handlePrev}
                 className="p-2 border border-[#D6C6A3] rounded-md hover:bg-[#EDE7D9] transition"
               >
-                {/* <ChevronLeft className="w-4 h-4 text-[#B68745]" /> */} kanan
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.28 7.72a.75.75 0 0 1 0 1.06l-2.47 2.47H21a.75.75 0 0 1 0 1.5H4.81l2.47 2.47a.75.75 0 1 1-1.06 1.06l-3.75-3.75a.75.75 0 0 1 0-1.06l3.75-3.75a.75.75 0 0 1 1.06 0Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </button>
               <button
                 onClick={handleNext}
                 className="p-2 border border-[#D6C6A3] rounded-md hover:bg-[#EDE7D9] transition"
               >
-                {/* <ChevronRight className="w-4 h-4 text-[#B68745]" /> */} kiri
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </button>
             </div>
           </div>

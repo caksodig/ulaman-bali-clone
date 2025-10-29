@@ -1,0 +1,38 @@
+{
+  "title": "What others say about us",
+  "reviews": [
+    {
+      "source": "Tripadvisor",
+      "rating": 4.8,
+      "count": 295
+    },
+    {
+      "source": "Google",
+      "rating": 4.7,
+      "count": 742
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Nasha, (CPT Retreats)",
+      "location": "from Georgia, USA",
+      "date": "May 2024",
+      "short": "Incredible day recharging and relaxing.",
+      "full": "Alignment is key! Changing Pace Travel had an incredible day recharging and relaxing. To achieve balance and harmony within, we partook in multiple private wellness sessions led by an amazing team of Balinese spiritual healers. Starting with guided meditation and breathwork in the morning, and later in the day, a sound healing journey in the jungle! Jero Buddhi and Jero Ratih and their team have us feeling refreshed, connected, and grateful."
+    },
+    {
+      "name": "Nasihuy (CPT Retreats)",
+      "location": "from Georgia, USA",
+      "date": "May 2024",
+      "short": "Incredible day recharging and relaxing.",
+      "full": "Alignment is key! Changing Pace Travel had an incredible day recharging and relaxing. To achieve balance and harmony within, we partook in multiple private wellness sessions led by an amazing team of Balinese spiritual healers. Starting with guided meditation and breathwork in the morning, and later in the day, a sound healing journey in the jungle! Jero Buddhi and Jero Ratih and their team have us feeling refreshed, connected, and grateful."
+    },
+    {
+      "name": "Nasihay, (CPT Retreats)",
+      "location": "from Georgia, USA",
+      "date": "May 2024",
+      "short": "Incredible day recharging and relaxing.",
+      "full": "Alignment is key! Changing Pace Travel had an incredible day recharging and relaxing. To achieve balance and harmony within, we partook in multiple private wellness sessions led by an amazing team of Balinese spiritual healers. Starting with guided meditation and breathwork in the morning, and later in the day, a sound healing journey in the jungle! Jero Buddhi and Jero Ratih and their team have us feeling refreshed, connected, and grateful."
+    }
+  ]
+}

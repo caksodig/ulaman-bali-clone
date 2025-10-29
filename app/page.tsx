@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import CallToActionSection from "@/components/ui/CallToActionSection";
 
 // Components - Critical above fold
 import HeroUlaman from "@/components/sections/home/HeroUlaman";
@@ -155,6 +156,7 @@ export default function HomePage() {
           />
         )}
       </CircularReveal>
+      <CallToActionSection pageKey="home" />
     </>
   );
 }

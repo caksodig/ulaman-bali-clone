@@ -1,0 +1,36 @@
+{
+  "title": "Not sure which retreat package suits you best?",
+  "description": "Consult with our Holistic Healing & Wellness Team. Let us know your preferences and we’ll contact you.",
+  "fields": [
+    {
+      "label": "Full name*",
+      "type": "text",
+      "placeholder": "Your full name",
+      "required": true
+    },
+    {
+      "label": "Email address*",
+      "type": "email",
+      "placeholder": "you@example.com",
+      "required": true
+    },
+    {
+      "label": "+1 | Phone number (With country code)",
+      "type": "text",
+      "placeholder": "+62 812 3456 7890",
+      "required": false
+    },
+    {
+      "label": "Country of residence",
+      "type": "text",
+      "placeholder": "Indonesia",
+      "required": false
+    }
+  ],
+  "contactPreference": {
+    "label": "Prefer to be contacted via*",
+    "subtext": "Select as many as needed",
+    "options": ["Email", "WhatsApp", "Telegram"]
+  },
+  "buttonText": "CONTINUE"
+}
