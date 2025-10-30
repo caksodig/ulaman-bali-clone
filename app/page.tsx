@@ -147,7 +147,6 @@ export default function HomePage() {
         textColor="#C69C4D"
         scrollHeight={200}
       >
-        {/* Content that slides up after image reveal */}
         {/* EXPERIENCE GRID - Lazy loaded */}
         {experienceData.length > 0 && (
           <ExperienceGrid

@@ -53,7 +53,7 @@ export default function IntroSection({ data }: IntroSectionProps) {
     >
       <div
         ref={ref}
-        className="max-w-xl md:max-w-3xl mx-auto max-h-screen px-4 lg:px-0"
+        className="max-w-152 sm:space-y-6 lg:space-y-5 md:max-w-176 mx-auto max-h-screen px-6 lg:px-16"
       >
         <h1 className="flex justify-center flex-wrap">
           {chars.map((char, i) => {
@@ -62,7 +62,7 @@ export default function IntroSection({ data }: IntroSectionProps) {
             return (
               <span
                 key={i}
-                className={`transition-colors duration-500 text-3xl md:text-2xl lg:text-4xl tracking-normal md:tracking-tighter ${
+                className={`transition-colors duration-500 text-3xl md:text-2xl lg:text-4xl tracking-normal ${
                   active ? "text-[#C69C4D]" : "text-stone-400"
                 }`}
                 style={{

@@ -1,10 +1,244 @@
+// "use client";
+
+// import { useRef, useState } from "react";
+// import Image from "next/image";
+// import { useRouter } from "next/navigation";
+// import { useViewportEnter } from "@/hooks/useIntersectionObserver";
+// import AnimatedLink from "@/components/ui/animated-link";
+
+// interface Experience {
+//   id: string;
+//   title: string;
+//   duration: string;
+//   image: string;
+//   ctaText?: string;
+//   ctaLink?: string;
+// }
+
+// interface ExperienceGridProps {
+//   experiences: Experience[];
+//   title?: string;
+// }
+
+// export default function ExperienceGrid({
+//   experiences,
+//   title = "Book one of our special packages for a getaway you'll never forget.",
+// }: ExperienceGridProps) {
+//   const [headerRef, hasHeaderEntered] = useViewportEnter({ threshold: 0.3 });
+//   const scrollContainerRef = useRef<HTMLDivElement>(null);
+//   const [canScrollLeft, setCanScrollLeft] = useState(false);
+//   const [canScrollRight, setCanScrollRight] = useState(true);
+
+//   // Check scroll position
+//   const checkScroll = () => {
+//     if (scrollContainerRef.current) {
+//       const { scrollLeft, scrollWidth, clientWidth } =
+//         scrollContainerRef.current;
+//       setCanScrollLeft(scrollLeft > 0);
+//       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+//     }
+//   };
+
+//   // Scroll functions
+//   const scrollLeft = () => {
+//     if (scrollContainerRef.current) {
+//       scrollContainerRef.current.scrollBy({
+//         left: -400,
+//         behavior: "smooth",
+//       });
+//     }
+//   };
+
+//   const scrollRight = () => {
+//     if (scrollContainerRef.current) {
+//       scrollContainerRef.current.scrollBy({
+//         left: 400,
+//         behavior: "smooth",
+//       });
+//     }
+//   };
+
+//   return (
+//     <section className="relative py-20 md:py-32 bg-[#EFEBE2]">
+//       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+//         {/* Title - Top Center */}
+//         <div ref={headerRef as any} className="text-center mb-12 md:mb-16">
+//           <h2
+//             className={`text-2xl sm:text-3xl md:text-4xl font-light text-[#C69C4D] leading-relaxed max-w-3xl mx-auto transition-all duration-700 ${
+//               hasHeaderEntered
+//                 ? "opacity-100 translate-y-0"
+//                 : "opacity-0 translate-y-4"
+//             }`}
+//           >
+//             {title}
+//           </h2>
+//         </div>
+
+//         {/* Navigation + Cards Container */}
+//         <div className="flex relative justify-center items-center md:pl-32">
+//           {/* Navigation Buttons - Bottom Left */}
+//           <div
+//             className={`md:block hidden items-center gap-4 mb-8 transition-all duration-700 ${
+//               hasHeaderEntered
+//                 ? "opacity-100 translate-y-0"
+//                 : "opacity-0 translate-y-4"
+//             }`}
+//             style={{ transitionDelay: "100ms" }}
+//           >
+//             <button
+//               onClick={scrollLeft}
+//               disabled={!canScrollLeft}
+//               className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 mb-4 ${
+//                 canScrollLeft
+//                   ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
+//                   : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
+//               }`}
+//               aria-label="Scroll left"
+//             >
+//               <svg
+//                 className="w-5 h-5"
+//                 fill="none"
+//                 viewBox="0 0 24 24"
+//                 stroke="currentColor"
+//               >
+//                 <path
+//                   strokeLinecap="round"
+//                   strokeLinejoin="round"
+//                   strokeWidth={2}
+//                   d="M15 19l-7-7 7-7"
+//                 />
+//               </svg>
+//             </button>
+
+//             <button
+//               onClick={scrollRight}
+//               disabled={!canScrollRight}
+//               className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+//                 canScrollRight
+//                   ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
+//                   : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
+//               }`}
+//               aria-label="Scroll right"
+//             >
+//               <svg
+//                 className="w-5 h-5"
+//                 fill="none"
+//                 viewBox="0 0 24 24"
+//                 stroke="currentColor"
+//               >
+//                 <path
+//                   strokeLinecap="round"
+//                   strokeLinejoin="round"
+//                   strokeWidth={2}
+//                   d="M9 5l7 7-7 7"
+//                 />
+//               </svg>
+//             </button>
+//           </div>
+
+//           {/* Scrollable Cards Container */}
+//           <div
+//             ref={scrollContainerRef}
+//             onScroll={checkScroll}
+//             className="flex pl-4 gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+//             style={{
+//               scrollbarWidth: "none",
+//               msOverflowStyle: "none",
+//             }}
+//           >
+//             {experiences.map((experience, index) => (
+//               <ExperienceCard
+//                 key={experience.id}
+//                 experience={experience}
+//                 index={index}
+//                 hasHeaderEntered={hasHeaderEntered}
+//               />
+//             ))}
+//           </div>
+
+//           {/* Fade gradient on right edge */}
+//           <div className="md:block hidden absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#E8E4DC] to-transparent pointer-events-none" />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// // Experience Card Component
+// function ExperienceCard({
+//   experience,
+//   index,
+//   hasHeaderEntered,
+// }: {
+//   experience: Experience;
+//   index: number;
+//   hasHeaderEntered: boolean;
+// }) {
+//   const [ref, hasEntered] = useViewportEnter({ threshold: 0.1 });
+//   const router = useRouter();
+
+//   return (
+//     <article
+//       ref={ref as any}
+//       className={`shrink-0 w-[300px] sm:w-[340px] group transition-all duration-700 ${
+//         hasEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+//       }`}
+//       style={{ transitionDelay: `${index * 100 + 200}ms` }}
+//     >
+//       <div
+//         onClick={() => router.push(experience.ctaLink || "#")}
+//         className="block"
+//       >
+//         <div className="rounded-lg overflow-hidden transition-all duration-300">
+//           {/* Image */}
+//           <div className="relative h-[380px] sm:h-[420px] overflow-hidden">
+//             <Image
+//               src={experience.image}
+//               alt={experience.title}
+//               fill
+//               className="object-cover transition-transform duration-700 group-hover:scale-110"
+//               sizes="340px"
+//               quality={85}
+//             />
+
+//             {/* Gradient overlay */}
+//             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+//           </div>
+
+//           {/* Content Overlay - Bottom of Image */}
+//           <div className="text-white">
+//             {/* Duration */}
+//             <p className="text-xs tracking-wider uppercase mb-2 opacity-90">
+//               {experience.duration}
+//             </p>
+
+//             {/* Title */}
+//             <h3 className="text-xl md:text-2xl font-light leading-tight mb-4">
+//               {experience.title}
+//             </h3>
+
+//             {/* CTA Link */}
+//             <AnimatedLink href="#" className="font-normal">
+//               <span>{experience.ctaText || "DISCOVER"}</span>
+//             </AnimatedLink>
+//           </div>
+//         </div>
+//       </div>
+//     </article>
+//   );
+// }
+
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useViewportEnter } from "@/hooks/useIntersectionObserver";
 import AnimatedLink from "@/components/ui/animated-link";
+
+// ============================================================================
+// TYPES
+// ============================================================================
 
 interface Experience {
   id: string;
@@ -20,49 +254,110 @@ interface ExperienceGridProps {
   title?: string;
 }
 
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
+const SCROLL_AMOUNT = 400;
+const PRELOAD_COUNT = 3; // Preload first 3 images
+const SCROLL_DEBOUNCE_MS = 100;
+
+// ============================================================================
+// MAIN COMPONENT
+// ============================================================================
+
 export default function ExperienceGrid({
   experiences,
   title = "Book one of our special packages for a getaway you'll never forget.",
 }: ExperienceGridProps) {
-  const [headerRef, hasHeaderEntered] = useViewportEnter({ threshold: 0.3 });
+  const [headerRef, hasHeaderEntered] = useViewportEnter<HTMLDivElement>({
+    threshold: 0.3,
+  });
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Check scroll position
-  const checkScroll = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } =
-        scrollContainerRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
+  // ============================================================================
+  // PRELOAD FIRST N IMAGES
+  // ============================================================================
 
-  // Scroll functions
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -400,
-        behavior: "smooth",
-      });
-    }
-  };
+  useEffect(() => {
+    // Preload first 3 images for instant display
+    experiences.slice(0, PRELOAD_COUNT).forEach((exp) => {
+      const img = new window.Image();
+      img.src = exp.image;
+    });
+  }, [experiences]);
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 400,
-        behavior: "smooth",
-      });
+  // ============================================================================
+  // SCROLL DETECTION (DEBOUNCED)
+  // ============================================================================
+
+  const checkScroll = useCallback(() => {
+    if (!scrollContainerRef.current) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+
+    setCanScrollLeft(scrollLeft > 10);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+  }, []);
+
+  // Debounced scroll handler
+  const handleScroll = useCallback(() => {
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
     }
-  };
+
+    scrollTimeoutRef.current = setTimeout(checkScroll, SCROLL_DEBOUNCE_MS);
+  }, [checkScroll]);
+
+  // Initial check after mount
+  useEffect(() => {
+    checkScroll();
+
+    // Recheck on window resize
+    const handleResize = () => checkScroll();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, [checkScroll]);
+
+  // ============================================================================
+  // SCROLL FUNCTIONS
+  // ============================================================================
+
+  const scrollLeft = useCallback(() => {
+    scrollContainerRef.current?.scrollBy({
+      left: -SCROLL_AMOUNT,
+      behavior: "smooth",
+    });
+  }, []);
+
+  const scrollRight = useCallback(() => {
+    scrollContainerRef.current?.scrollBy({
+      left: SCROLL_AMOUNT,
+      behavior: "smooth",
+    });
+  }, []);
+
+  // ============================================================================
+  // RENDER
+  // ============================================================================
 
   return (
     <section className="relative py-20 md:py-32 bg-[#EFEBE2]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title - Top Center */}
-        <div ref={headerRef as any} className="text-center mb-12 md:mb-16">
+        {/* ================================================================ */}
+        {/* TITLE - TOP CENTER */}
+        {/* ================================================================ */}
+        <div ref={headerRef} className="text-center mb-12 md:mb-16">
           <h2
             className={`text-2xl sm:text-3xl md:text-4xl font-light text-[#C69C4D] leading-relaxed max-w-3xl mx-auto transition-all duration-700 ${
               hasHeaderEntered
@@ -74,72 +369,23 @@ export default function ExperienceGrid({
           </h2>
         </div>
 
-        {/* Navigation + Cards Container */}
+        {/* ================================================================ */}
+        {/* NAVIGATION + CARDS CONTAINER */}
+        {/* ================================================================ */}
         <div className="flex relative justify-center items-center md:pl-32">
           {/* Navigation Buttons - Bottom Left */}
-          <div
-            className={`md:block hidden items-center gap-4 mb-8 transition-all duration-700 ${
-              hasHeaderEntered
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-            style={{ transitionDelay: "100ms" }}
-          >
-            <button
-              onClick={scrollLeft}
-              disabled={!canScrollLeft}
-              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 mb-4 ${
-                canScrollLeft
-                  ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
-                  : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
-              }`}
-              aria-label="Scroll left"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <button
-              onClick={scrollRight}
-              disabled={!canScrollRight}
-              className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-                canScrollRight
-                  ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
-                  : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
-              }`}
-              aria-label="Scroll right"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
+          <NavigationButtons
+            canScrollLeft={canScrollLeft}
+            canScrollRight={canScrollRight}
+            onScrollLeft={scrollLeft}
+            onScrollRight={scrollRight}
+            hasHeaderEntered={hasHeaderEntered}
+          />
 
           {/* Scrollable Cards Container */}
           <div
             ref={scrollContainerRef}
-            onScroll={checkScroll}
+            onScroll={handleScroll}
             className="flex pl-4 gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
             style={{
               scrollbarWidth: "none",
@@ -151,62 +397,168 @@ export default function ExperienceGrid({
                 key={experience.id}
                 experience={experience}
                 index={index}
-                hasHeaderEntered={hasHeaderEntered}
+                isPriority={index < PRELOAD_COUNT}
               />
             ))}
           </div>
 
           {/* Fade gradient on right edge */}
-          <div className="md:block hidden absolute top-0 right-0 w-32 h-full bg-linear-to-l from-[#E8E4DC] to-transparent pointer-events-none" />
+          <div className="md:block hidden absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#EFEBE2] to-transparent pointer-events-none" />
         </div>
       </div>
     </section>
   );
 }
 
-// Experience Card Component
+// ============================================================================
+// NAVIGATION BUTTONS COMPONENT
+// ============================================================================
+
+interface NavigationButtonsProps {
+  canScrollLeft: boolean;
+  canScrollRight: boolean;
+  onScrollLeft: () => void;
+  onScrollRight: () => void;
+  hasHeaderEntered: boolean;
+}
+
+function NavigationButtons({
+  canScrollLeft,
+  canScrollRight,
+  onScrollLeft,
+  onScrollRight,
+  hasHeaderEntered,
+}: NavigationButtonsProps) {
+  return (
+    <div
+      className={`md:block hidden items-center gap-4 mb-8 transition-all duration-700 ${
+        hasHeaderEntered
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-4"
+      }`}
+      style={{ transitionDelay: "100ms" }}
+    >
+      <button
+        onClick={onScrollLeft}
+        disabled={!canScrollLeft}
+        className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 mb-4 ${
+          canScrollLeft
+            ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white hover:scale-110"
+            : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
+        }`}
+        aria-label="Scroll left"
+      >
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+
+      <button
+        onClick={onScrollRight}
+        disabled={!canScrollRight}
+        className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+          canScrollRight
+            ? "border-[#C69C4D] text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white hover:scale-110"
+            : "border-stone-400 text-stone-400 cursor-not-allowed opacity-50"
+        }`}
+        aria-label="Scroll right"
+      >
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
+// ============================================================================
+// EXPERIENCE CARD COMPONENT
+// ============================================================================
+
+interface ExperienceCardProps {
+  experience: Experience;
+  index: number;
+  isPriority: boolean;
+}
+
 function ExperienceCard({
   experience,
   index,
-  hasHeaderEntered,
-}: {
-  experience: Experience;
-  index: number;
-  hasHeaderEntered: boolean;
-}) {
-  const [ref, hasEntered] = useViewportEnter({ threshold: 0.1 });
-  const router = useRouter();
+  isPriority,
+}: ExperienceCardProps) {
+  const [ref, hasEntered] = useViewportEnter<HTMLElement>({
+    threshold: 0.1,
+    rootMargin: "100px", // Start loading before visible
+  });
+
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <article
-      ref={ref as any}
+      ref={ref}
       className={`shrink-0 w-[300px] sm:w-[340px] group transition-all duration-700 ${
         hasEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       style={{ transitionDelay: `${index * 100 + 200}ms` }}
     >
-      <div
-        onClick={() => router.push(experience.ctaLink || "#")}
+      <Link
+        href={experience.ctaLink || "#"}
         className="block"
+        prefetch={isPriority} // Prefetch first 3 cards
       >
         <div className="rounded-lg overflow-hidden transition-all duration-300">
-          {/* Image */}
-          <div className="relative h-[380px] sm:h-[420px] overflow-hidden">
-            <Image
-              src={experience.image}
-              alt={experience.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-              sizes="340px"
-              quality={85}
-            />
+          {/* ============================================================ */}
+          {/* IMAGE WITH SKELETON LOADER */}
+          {/* ============================================================ */}
+          <div className="relative h-[380px] sm:h-[420px] overflow-hidden bg-neutral-200">
+            {/* Skeleton Loader */}
+            {!imageLoaded && (
+              <div className="absolute inset-0 animate-pulse">
+                <div className="w-full h-full bg-gradient-to-br from-neutral-200 via-neutral-300 to-neutral-200 bg-[length:200%_200%]" />
+              </div>
+            )}
+
+            {/* Image - Only render when in viewport or priority */}
+            {(hasEntered || isPriority) && (
+              <Image
+                src={experience.image}
+                alt={experience.title}
+                fill
+                priority={isPriority}
+                loading={isPriority ? "eager" : "lazy"}
+                quality={isPriority ? 85 : 75} // Lower quality for non-priority
+                className={`object-cover transition-all duration-700 group-hover:scale-110 ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                sizes="(max-width: 640px) 300px, 340px"
+                onLoad={() => setImageLoaded(true)}
+              />
+            )}
 
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           </div>
 
-          {/* Content Overlay - Bottom of Image */}
-          <div className="text-white">
+          {/* ============================================================ */}
+          {/* CONTENT OVERLAY - BOTTOM OF IMAGE */}
+          {/* ============================================================ */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
             {/* Duration */}
             <p className="text-xs tracking-wider uppercase mb-2 opacity-90">
               {experience.duration}
@@ -218,12 +570,17 @@ function ExperienceCard({
             </h3>
 
             {/* CTA Link */}
-            <AnimatedLink href="#" className="font-normal">
-              <span>{experience.ctaText || "DISCOVER"}</span>
-            </AnimatedLink>
+            <div className="inline-block">
+              <AnimatedLink
+                href={experience.ctaLink || "#"}
+                className="font-normal text-white after:bg-white"
+              >
+                <span>{experience.ctaText || "DISCOVER"}</span>
+              </AnimatedLink>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 }
