@@ -257,22 +257,22 @@ export default function HeroUlaman({
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+            className="absolute inset-0 bg-transparent duration-300"
             onClick={handlePosterClose}
             aria-hidden="true"
           />
 
           {/* Modal Content */}
           <div className="relative z-50 flex items-center justify-center max-h-[90vh] max-w-[90vw] animate-fadeIn">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black">
+            <div className="relative w-full max-w-fit mt-20">
               {/* Poster Image */}
-              <div className="relative w-auto h-auto max-h-[85vh] max-w-[85vw] flex items-center justify-center">
+              <div className="aspect-[10/12.5] w-full rounded-tl-2xl rounded-br-2xl border-4 border-[#C69C4D] max-w-fit max-h-[50vh] xl:max-h-[60vh]">
                 <Image
                   src={imageUrl}
                   alt={title}
                   width={800}
                   height={1200}
-                  className="object-contain max-h-[85vh]"
+                  className="rounded-tl-2xl rounded-br-2xl w-full h-full object-cover"
                   priority
                   quality={90}
                 />
@@ -281,7 +281,7 @@ export default function HeroUlaman({
               {/* Close Button */}
               <button
                 onClick={handlePosterClose}
-                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white bg-[#C69C4D] rounded-full transition-all duration-300 hover:bg-[#b28844] hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C69C4D] z-50"
+                className="absolute -top-3 -right-3 w-10 h-10 flex items-center justify-center text-white bg-[#C69C4D] rounded-full transition-all duration-300 hover:bg-[#b28844] hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C69C4D] z-50"
                 aria-label="Close poster"
               >
                 <svg
@@ -298,6 +298,14 @@ export default function HeroUlaman({
                   />
                 </svg>
               </button>
+              <nav className="absolute top-full pt-5 left-0">
+                <a
+                  className=" rounded-tr-xl rounded-bl-xl border border-brand bg-[#C69C4D] text-white hover:bg-white hover:text-[#C69C4D] py-2.5 px-6 leading-none hover:bg-light hover:text-brand"
+                  href=""
+                >
+                  Book Now
+                </a>
+              </nav>
 
               {/* Optional: "Skip" text hint */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm">

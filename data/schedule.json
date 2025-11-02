@@ -1,0 +1,30 @@
+{
+  "title": "Weekly Schedule",
+  "subtitle": "Advanced Booking Is Recommended",
+  "days": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ],
+  "times": ["7 AM", "12 PM", "1 PM"],
+  "activities": [
+    {
+      "time": "7 AM",
+      "activity": "Yoga (All Levels)",
+      "color": "#DEE6CC"
+    },
+    {
+      "time": "12 PM",
+      "activity": "Sound Healing",
+      "color": "#D5DDD7"
+    }
+  ],
+  "cta": {
+    "text": "DOWNLOAD PDF",
+    "href": "https://drive.google.com/file/d/1HOiTV2UmmH4joOGKhwJhYdPIeN3Y9NfK/view"
+  }
+}
