@@ -8,5 +8,20 @@
     "message": "Reconnect With Yourself In Luxurious Comfort.",
     "ctaText": "Book Your Stay",
     "ctaLink": "/retreats"
+  },
+  "rooms": {
+    "message": "Reconnect With Yourself In Luxurious Comfort.",
+    "ctaText": "Learn More",
+    "ctaLink": "/retreats"
+  },
+  "activities": {
+    "message": "Experience nature, comfort and luxury like never before.",
+    "ctaText": "Book Now",
+    "ctaLink": "/retreats"
+  },
+  "facilities": {
+    "message": "Experience nature, comfort, and luxury like never before.",
+    "ctaText": "Book Your Stay",
+    "ctaLink": "/retreats"
   }
 }

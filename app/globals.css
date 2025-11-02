@@ -19,6 +19,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.marquee-content img {
+  flex-shrink: 0;
+}
+
 h1,
 h2,
 h3,
@@ -27,18 +31,3 @@ h5,
 h6 {
   font-family: var(--font-americana);
 }
-
-/* @keyframes slide-up {
-  0% {
-    transform: translateY(40px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-up {
-  animation: slide-up 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-} */

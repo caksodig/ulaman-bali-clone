@@ -1,0 +1,273 @@
+{
+  "filters": {
+    "types": ["In House", "Outdoor"],
+    "categories": [
+      "All Experiences",
+      "Activity",
+      "Culinary",
+      "Romantic",
+      "Wellness",
+      "Surprise Arrangements",
+      "Special Arrangements",
+      "Photo / Video Shoots",
+      "Wedding",
+      "Cultural",
+      "Spiritual",
+      "Free for In-House Guests"
+    ]
+  },
+  "activities": [
+    {
+      "id": 1,
+      "title": "Private Tenis Coach",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 500.000++ / Couple",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Ulaman offers private tennis lessons for all levels on our court located amidst the rice fields. Rackets and balls are provided, and night lights are available for evening play."
+    },
+    {
+      "id": 2,
+      "title": "Romantic 5-Star Culinary Experience",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 1.500.000++ / Couple",
+      "image": "/image/activities/culinary.jpg",
+      "description": "4-Course Chef's Selection, created with love by Chef Arik and his team. Experience an internationally inspired personalized menu using local seasonal ingredients combined with our Chef's inspiration. Dine in the most exclusive romantic venue in Bali (or maybe the world) right in front of natural waterfalls, beautifully decorated with local flowers, palm leaf arches, and umbrellas. The exclusive venue, set against the enchanting backdrop of Ulaman's natural waterfalls and magnificent bamboo architecture, includes your own private server. Add a message with flowers, and this candlelit dinner will be your most memorable ever. Includes a choice of local beverage or cocktail and house wine."
+    },
+    {
+      "id": 3,
+      "title": "Private Yoga Session (Hatha, Yin or Fly High Yoga)",
+      "type": "In House",
+      "category": "Wellness",
+      "price": "IDR 1.000.000++ / Pax",
+      "image": "/image/activities/yoga.jpg",
+      "description": "Enjoy a private yoga session designed for you, Hatha for strength, or Yin for deep relaxation. For a unique twist, try Fly High Yoga with aerial support to enhance stretches and core strength."
+    },
+    {
+      "id": 4,
+      "title": "Romantic Bed Decorations",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 500.000++ / Couple",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Walking into the room to a delightful surprise, your loved one will be greeted with a romantic bed arrangement that makes it a day they'll never forget! Nothing says romance like rose petals carefully spread on the bed, expressing what your heart wants to say. As an added treat for chocolate lovers, indulge in Ulaman's exquisite homemade chocolates."
+    },
+    {
+      "id": 5,
+      "title": "VIP Airport Transfers via Helicopter",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "Starting from $2,500 USD",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Arrive at Ulaman quicker and in style with our VIP helicopter airport transfers, avoiding the traffic and ensuring a smooth, luxurious journey."
+    },
+    {
+      "id": 6,
+      "title": "Balloons and Sparkles",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 1.500.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "This is it! Whether it's an anniversary, birthday, or special occasion, go over the top with incredible balloons and bed decorations to give your loved one the surprise of a lifetime. Once they open the door, they will be welcomed with floating balloons and a lovely greeting sign. The romantic bed decoration, rose petals, and Ulaman chocolates, all carefully laid on the bed, bring a romantic and exciting ambiance for a truly memorable surprise."
+    },
+    {
+      "id": 7,
+      "title": "Pool Flower Decorations",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 2.000.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Your Bali experience is not complete without the thrilling sensation of jumping into your private swimming pool, filled with thousands of vibrant flower petals. Enjoy this incredible flower artwork at Ulaman Eco Luxury Retreat, where our staff's artistic talents will transform your pool into a floral masterpiece. Enhance this once-in-a-lifetime experience with a photographer or drone option upgrade to capture these unforgettable moments."
+    },
+    {
+      "id": 8,
+      "title": "Pre-wedding venue",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 3.000.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Capture life’s precious moments just before you say 'I do' at our resort with stunning bamboo structures! Surrounded by tropical jungle, waterfall, and river, it’s the perfect backdrop for unforgettable photos. Create memories that will last a lifetime with us."
+    },
+    {
+      "id": 9,
+      "title": "Bathtub Flower Decorations",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 350.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "The Balinese regard flower baths as the 'Ceremony of Flowers,' a practice that has been part of their culture for hundreds of years. Enjoy a relaxing bath with either Balinese or rose petals, beautifully arranged by our artistic staff to create a luxurious bath experience. Guests can add design suggestions to personalize their bath. Add a glass of bubbly to this already amazing experience, making it truly unforgettable."
+    },
+    {
+      "id": 10,
+      "title": "Fairytale Tropical Jungle Wedding",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 1.500.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Surrounded by an in-house waterfall, majestic river, and stunning rice field, Ulaman is the ultimate eco-luxury venue for your dream destination wedding in Bali. Let us help plan your exotic tropical jungle wedding. Our elevated yoga shala, stunning tree house, saltwater swimming pool, outdoor terrace, organic garden, and five-star E.A.R.T.H restaurant offer an idyllic setting for your bridal shower, wedding ceremony, and cocktail reception. Our 20 spacious guest villas can accommodate up to 40 of your loved ones."
+    },
+    {
+      "id": 11,
+      "title": "'Melukat' Water Blessing Ceremony",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 1.500.000++ / Couple",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Experience an ancient Balinese purification ritual that cleanses your mind, body, and soul from negative energy. Release what no longer serves you while harmonizing the microcosm and macrocosm through the sacred energy of the five elements."
+    },
+    {
+      "id": 12,
+      "title": "Waterfall Dining",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 350.000++ / Couple",
+      "image": "/image/activities/culinary.jpg",
+      "description": "The Waterfall Deck offers an exclusive and intimate dining experience set in front of a magical natural waterfall. Traditionally inspired with handmade Balinese ornaments, flowers, and candles, and featuring personalized service, it creates an unparalleled and enchanting atmosphere, making it the perfect venue for romantic dinners and special occasions."
+    },
+    {
+      "id": 13,
+      "title": "Ulaman Romantic Dinner",
+      "type": "In Houser",
+      "category": "Culinary",
+      "price": "IDR 1.500.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Experience a true 5-star culinary journey at Ulaman with our 4-Course Chef's Selection, created with love by Chef Arik and his team. This surprise menu uses local seasonal ingredients and exceptional creativity. Share your food preferences, and we'll handle the rest. The meal includes a choice of local beverage or cocktail and local house wine. Each venue is beautifully decorated with Balinese flowers, palm leaf arches, and umbrellas, creating a unique, candlelit dining experience in the jungle."
+    },
+    {
+      "id": 14,
+      "title": "Flowers and Chocolates",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 750.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Take it one step further by surprising your loved one with a carefully curated flower bouquet. Choose from a divine arrangement of premium tropical flowers or roses in your chosen colors and style. This bouquet will certainly enhance an intimate moment with your partner. We have also added Ulaman's delicious homemade chocolate for both of you to enjoy together."
+    },
+    {
+      "id": 15,
+      "title": "Reiki Healing",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 750.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "During a Reiki healing session, the practitioner gently places their hands on or slightly above your body while channeling universal energy to promote relaxation, reduce stress, and support the natural healing ability of the body."
+    },
+    {
+      "id": 16,
+      "title": "Photoshoot and Drone Services",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 2.500.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "A picture is worth a thousand words…Capture unforgettable moments at the most Instagrammable hotel in the world. Our professional photographer, fully equipped with an assistant, is ready to provide you with a stunning photoshoot experience. Ulaman's unique architectural design, with curvilinear roofing, aesthetic bamboo structures, and uniquely shaped buildings, offers countless picture-perfect locations for personal or professional purposes."
+    },
+    {
+      "id": 17,
+      "title": "Sandikala: A Romantic Villa Dinner",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 3.000.000++ / Couple",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Experience the enchantment of a romantic dinner in the privacy of your own villa, either on your deck or in your garden (where applicable). Enjoy a full Balinese decoration, complete with your own private server and a custom-designed 4-course meal. Prepared with the same features as our other romantic dinner locations but in the privacy of your own villa, this candlelit dinner will make your evening truly memorable."
+    },
+    {
+      "id": 18,
+      "title": "Chef's Selection Menu",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 295.000++",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Discover a 5-star culinary journey with our Chef's Selection at E.A.R.T.H. Restaurant! Share your food preferences and we’ll do the rest! Sit back and let Chef Arik and his team prepare a special surprise menu for you, based on local seasonal selections, showcasing a harmonized balance of flavors, presentation and creativity. Choose your favorite dining spot, add decorations for an extra charge and select an optional wine pairing for an enhanced dining experience."
+    },
+    {
+      "id": 19,
+      "title": "Yoga (All Levels)",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 150.000++ / Outside Guest",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Never tried yoga before? Start your day with yoga and meditation for all levels, a daily activity surrounded by the soothing sounds of the Ulaman jungle and waterfalls."
+    },
+    {
+      "id": 20,
+      "title": "Sparkling Afternoon Delight",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 550.000++ / Couple",
+      "image": "/image/activities/culinary.jpg",
+      "description": "An Afternoon Tea for two surrounded by unique and beautiful bamboo architecture savoring a large array of delightful finger foods and delectable desserts, using seasonal ingredients inspired by local and International cuisines. Includes a pot of select premium artisanal teas. The owner's recommendation for the best venue is the main house's private balcony lounge."
+    },
+    {
+      "id": 21,
+      "title": "Cooking Class",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 1.000.000++ / Pax (min.2)",
+      "image": "/image/activities/culinary.jpg",
+      "description": "Discover the flavours of Indonesia with Chef Arik and his team in our fun and interactive cooking class! Learn how to create the most popular and tasty recipes, passed down through generations and integral to Indonesian culture, with our experienced cooking team. You'll have your own cutting board and Ulaman cookbook to write notes and take home with you. Join our own organic garden tour and guided market tour where you will learn and have a chance to taste some of the local ingredients and market delicacies or skip the tours and just join the class as an option. Then the best part of all is eating everything you just made (keep some room from breakfast)."
+    },
+    {
+      "id": 22,
+      "title": "Sound Healing",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 350.000++ / Pax",
+      "image": "/image/activities/culinary.jpg",
+      "description": "A meditative sound healing journey with mantras, Tibetan singing bowls, gongs, and chimes, designed to release blocked energy, balance your chakras, and cultivate deep peace and tranquility in harmony with nature’s sounds."
+    },
+    {
+      "id": 23,
+      "title": "Floating Breakfast or Lunch",
+      "type": "In House",
+      "category": "Culinary",
+      "price": "IDR 350.000++ / Basket",
+      "image": "/image/activities/culinary.jpg",
+      "description": "There's a first time for everything, and this is your chance to enjoy Bali's best breakfast or lunch (no, not in bed) but floating while you dine in any pool at Ulaman. Prepared with love and adorned with flowers, choose your breakfast or brunch and capture that perfect picture moment in one of the most Instagrammable hotels in the world. You can also hire our photographer with advance notice."
+    },
+    {
+      "id": 24,
+      "title": "Vibrational Meridian Therapy Or Private Sound Healing",
+      "type": "Outdoor",
+      "category": "Wellness",
+      "price": "IDR 1.750.000++ / Couple",
+      "image": "/image/activities/outdoor/outdoor1.avif",
+      "description": "Experience deep relaxation and renewal with our Vibrational Meridian Therapy, where Balinese & Shiatsu massage blends with the soothing tones of Tibetan singing bowls. These harmonious vibrations release tension, alleviate pain, enhance circulation, clear energy blockages and promote cellular rejuvenation, leaving you balanced and at peace"
+    },
+    {
+      "id": 25,
+      "title": "Village Tour",
+      "type": "Outdoor",
+      "category": "Activity",
+      "price": "IDR 500.000++ / (min.2",
+      "image": "/image/activities/outdoor/outdoor2.avif",
+      "description": "Experience the daily life of the Balinese as you take a stroll through its vibrant community, exploring the culture, traditions, and local temples in one of Ulaman's neighboring villages with an authentic guided tour."
+    },
+    {
+      "id": 26,
+      "title": "Mountain Bike Tour",
+      "type": "Outdoor",
+      "category": "Activity",
+      "price": "IDR 500.000++ / (min.2",
+      "image": "/image/activities/outdoor/outdoor3.avif",
+      "description": "Experience an authentic guided cycling tour along exclusive trails through rice fields. Bike through the area, observe local farmers at work, and the daily life of villagers with stops along the way to take photos and capture the scenic beauty surrounding Ulaman."
+    },
+    {
+      "id": 27,
+      "title": "Helicopter Tours",
+      "type": "Outdoor",
+      "category": "Activity",
+      "price": "Starting from $2,000 USD",
+      "image": "/image/activities/outdoor/outdoor4.avif",
+      "description": "Explore Bali's breathtaking landscapes from above with our selected helicopter tours. Capture stunning aerial views and enjoy a unique perspective of the island’s beauty."
+    },
+    {
+      "id": 28,
+      "title": "Ulaman’s Nature Trek",
+      "type": "Outdoor",
+      "category": "Activity",
+      "price": "IDR 500.000++ (min. 2)",
+      "image": "/image/activities/outdoor/outdoor5.avif",
+      "description": "Led by our experienced guide, we journey from Ulaman through rice fields, learning about Balinese 'Subak' irrigation, local wildlife, and sacred temples. The trek continues along the Ulaman river, crossing a bamboo bridge, and providing an educational and scenic adventure."
+    }
+  ]
+}

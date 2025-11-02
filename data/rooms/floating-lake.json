@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Floating Lake",
+    "unitsAvailable": "4 Units Available",
+    "size": "52m²",
+    "features": ["Sleeps 3 (With sofa bed)", "King sized bed"],
+    "description": "Set above Bali’s only bio-filtered, koi-filled lake, Ulaman’s Floating Lake Villas offer a serene and luxurious experience unlike any other. Each villa features a private floating deck and a sunken round hammock, thoughtfully designed for couples—perfect for stargazing or feeding the koi below. Seamlessly blending modern tropical elegance with natural elements, the villas include a sun deck patio, hanging net, and a handcrafted teakwood bathtub.",
+    "images": [
+      "/image/villas/floating-lake-1.avif",
+      "/image/rooms/floating-lake/floating1.avif",
+      "/image/rooms/floating-lake/floating2.avif",
+      "/image/rooms/floating-lake/floating3.avif",
+      "/image/villas/floating-lake-2.avif",
+      "/image/rooms/floating-lake/floating4.avif"
+    ]
+  }
+]

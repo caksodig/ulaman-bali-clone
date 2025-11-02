@@ -1,0 +1,14 @@
+{
+  "packages": [
+    {
+      "title": "The Avatar Experience",
+      "duration": "3 Days / 2 Nights",
+      "image": "/image/villas/avatar-tree-house-1.avif"
+    },
+    {
+      "title": "The Ultimate Honeymoon",
+      "duration": "3 Days / 2 Nights",
+      "image": "/image/villas/jungle-garden-1.avif"
+    }
+  ]
+}

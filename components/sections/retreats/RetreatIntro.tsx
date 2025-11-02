@@ -22,7 +22,7 @@ export const RetreatIntro = ({ title, description }: RetreatIntroProps) => {
       }`}
     >
       <div className="space-y-em sm:w-fit sm:mx-auto sm:text-center max-w-152 xl:max-w-176">
-        <h2 className="text-2xl md:text-3xl font-serif text-[#B68745] mb-8 leading-snug">
+        <h2 className="text-2xl md:text-3xl font-serif text-[#C69C4D] mb-8 leading-snug">
           {title}
         </h2>
         <p className="text-sm md:text-base text-stone-700 leading-relaxed">

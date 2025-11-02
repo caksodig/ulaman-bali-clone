@@ -7,7 +7,7 @@
         "type": "video",
         "videoType": "youtube",
         "videoId": "7moIJ0LIwPc",
-        "posterUrl": "/figure.png"
+        "posterUrl": "/image/new-figure.avif"
       },
       "seo": {
         "alt": "Ulaman Bali luxury eco resort aerial view",
@@ -157,6 +157,19 @@
           "ctaLink": "/experiences/private-yoga"
         }
       ]
+    },
+    {
+      "id": "spa-video",
+      "type": "video-reveal",
+      "topText": "Balance - Relaxation",
+      "bottomText": "Renewal - Healing",
+      "videoUrl": "/videos/spa-experience.webm",
+      "videoPoster": "/image/spa-poster.avif",
+      "ctaText": "VISIT SPA WEBSITE",
+      "ctaLink": "https://spa.ulamanresort.com",
+      "backgroundColor": "#EFEBE2",
+      "textColor": "#343E35",
+      "accentColor": "#C69C4D"
     }
   ]
 }

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "src": "https://images.prismic.io/ulaman/Zj2YskMTzAJOCrKK_eco-luxury-resort-indonesia.jpg?auto=format,compress",
+    "alt": "Eco luxury resort Indonesia",
+    "aspectRatio": {
+      "mobile": "10/14",
+      "tablet": "10/19",
+      "desktop": "10/14",
+      "wide": "10/12.5"
+    }
+  },
+  {
+    "id": "2",
+    "src": "https://images.prismic.io/ulaman/ZlmMqKWtHYXtT9dX_ulamanbali.jpg?auto=format,compress",
+    "alt": "Ulaman Bali view",
+    "aspectRatio": {
+      "mobile": "10/13",
+      "tablet": "10/16",
+      "desktop": "10/12",
+      "wide": "10/9.5"
+    }
+  },
+  {
+    "id": "3",
+    "src": "https://images.prismic.io/ulaman/ZlmMqqWtHYXtT9dZ_luxury-eco-retreat-bali.jpg?auto=format,compress",
+    "alt": "Luxury eco retreat Bali",
+    "aspectRatio": {
+      "mobile": "10.8/10",
+      "tablet": "10/15",
+      "desktop": "10.7/10",
+      "wide": "10/9"
+    }
+  },
+  {
+    "id": "4",
+    "src": "https://images.prismic.io/ulaman/Zjeoo0MTzAJOCiqy_luxury--hotel-bali.jpg?auto=format,compress",
+    "alt": "Luxury hotel Bali",
+    "aspectRatio": {
+      "mobile": "10.3/10",
+      "tablet": "10/20",
+      "desktop": "10/16.7",
+      "wide": "10/13"
+    }
+  },
+  {
+    "id": "5",
+    "src": "https://images.prismic.io/ulaman/ZlmMq6WtHYXtT9db_ecoresort.jpg?auto=format,compress",
+    "alt": "Eco resort Bali",
+    "aspectRatio": {
+      "mobile": "10/15.5",
+      "tablet": "10/19.5",
+      "desktop": "10/14",
+      "wide": "10/12.5"
+    }
+  },
+  {
+    "id": "6",
+    "src": "https://images.prismic.io/ulaman/ZlmMqaWtHYXtT9dY_ULAMAN.jpg?auto=format,compress",
+    "alt": "Ulaman architecture",
+    "aspectRatio": {
+      "mobile": "10/11",
+      "tablet": "10/15.5",
+      "desktop": "10/12",
+      "wide": "10/9.5"
+    }
+  }
+]

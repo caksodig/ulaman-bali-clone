@@ -3,6 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import rawAvailabilityData from "@/data/availability-data.json";
+import type { AvailabilityData } from "../ui/bookingModal";
+const availabilityData = rawAvailabilityData as AvailabilityData;
+import BookingModal from "../ui/bookingModal";
 
 interface NavLink {
   label: string;
@@ -29,11 +33,12 @@ export default function Header({
     { label: "Retreats", href: "/retreats" },
   ],
   ctaText = "Stay With Us",
-  ctaLink = "/reservations",
+  ctaLink = "",
   transparentThreshold = 100,
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,14 +125,30 @@ export default function Header({
           <div className="hidden lg:flex items-center">
             <Link
               href={ctaLink}
+              onClick={() => setIsModalOpen(true)}
               className={`px-6 py-2.5 border rounded-tl-lg rounded-br-lg transition-all duration-300 text-xs tracking-widest uppercase font-medium ${
                 isScrolled
                   ? "border-[#C69C4D] text-[#C69C4D]"
-                  : "border-white text-white hover:bg-white"
+                  : "border-white text-white hover:text-[#C69C4D] hover:bg-white"
               }`}
             >
               {ctaText}
             </Link>
+            <BookingModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              availabilityData={availabilityData}
+              config={{
+                // logoUrl: "/images/ulaman-logo.png",
+                defaultAdults: 2,
+                minNights: 2,
+                maxNights: 14,
+                bookingEngineUrl:
+                  "https://www.book-secure.com/?HotelName=ASIAIDHTLUlamanEcoLu&hname=ASIAIDHTLUlamanEcoLu&arrival=2025-11-15&adults1=1&campaignId=41350&accessCode=CAMP-Specialopening&redir=BIZ-so5523q0o4&rt=1761933766&property=idbal31691&code=CAMP-Specialopening&s=results",
+                accentColor: "#C69C4D",
+                backgroundColor: "#EFEBE2",
+              }}
+            />
           </div>
 
           {/* MOBILE MENU BUTTON - Hamburger */}

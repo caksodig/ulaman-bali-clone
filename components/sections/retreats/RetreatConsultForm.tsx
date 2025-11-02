@@ -52,7 +52,7 @@ export const RetreatConsultForm = () => {
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
         {/* LEFT SIDE */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-serif text-[#B68745] mb-6">
+          <h2 className="text-3xl md:text-4xl font-serif text-[#C69C4D] mb-6">
             {data.title}
           </h2>
           <p className="text-gray-700 leading-relaxed text-base">
@@ -89,7 +89,7 @@ export const RetreatConsultForm = () => {
                   type={field.type}
                   placeholder={field.placeholder}
                   required={field.required}
-                  className="w-full bg-transparent border-b border-[#B68745]/40 focus:border-[#B68745] outline-none py-1 text-sm"
+                  className="w-full bg-transparent border-b border-[#C69C4D]/40 focus:border-[#C69C4D] outline-none py-1 text-sm"
                 />
               </div>
             ))}
@@ -97,10 +97,10 @@ export const RetreatConsultForm = () => {
 
           {/* Contact Preference */}
           <div>
-            <p className="text-sm text-[#B68745] font-medium mb-2">
+            <p className="text-sm text-[#C69C4D] font-medium mb-2">
               {data.contactPreference.subtext}
             </p>
-            <p className="text-sm text-[#B68745] font-medium mb-3">
+            <p className="text-sm text-[#C69C4D] font-medium mb-3">
               {data.contactPreference.label}
             </p>
             <div className="flex flex-wrap gap-6">
@@ -111,9 +111,9 @@ export const RetreatConsultForm = () => {
                 >
                   <span
                     onClick={() => toggleContactVia(method)}
-                    className={`w-4 h-4 rounded-full border border-[#B68745] flex items-center justify-center ${
+                    className={`w-4 h-4 rounded-full border border-[#C69C4D] flex items-center justify-center ${
                       contactVia.includes(method)
-                        ? "bg-[#B68745]"
+                        ? "bg-[#C69C4D]"
                         : "bg-transparent"
                     }`}
                   >

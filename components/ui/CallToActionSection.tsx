@@ -15,7 +15,7 @@ export default function CallToActionSection({
   if (!section) return null;
 
   return (
-    <section className="py-24 text-center">
+    <section className="pb-24 text-center">
       <div className="max-w-125 lg:max-w-160 mx-auto px-32">
         <h2 className="text-xl md:text-3xl font-normal text-[#C69C4D] mb-6 leading-relaxed">
           {section.message}

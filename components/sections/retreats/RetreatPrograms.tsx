@@ -64,10 +64,10 @@ export const RetreatPrograms = ({ programs }: RetreatProgramsProps) => {
 
         {/* Details */}
         <div className="space-y-5">
-          <h3 className="text-2xl font-serif text-[#B68745]">
+          <h3 className="text-2xl font-serif text-[#C69C4D]">
             {activeProgram.title}
           </h3>
-          <p className="italic text-[#B68745]">{activeProgram.subtitle}</p>
+          <p className="italic text-[#C69C4D]">{activeProgram.subtitle}</p>
 
           {/* Durations */}
           <div className="flex gap-3 mt-3">
@@ -87,7 +87,7 @@ export const RetreatPrograms = ({ programs }: RetreatProgramsProps) => {
 
           {/* List */}
           <div>
-            <h4 className="text-[#B68745] font-medium mt-4">
+            <h4 className="text-[#C69C4D] font-medium mt-4">
               Suitable for those looking to:
             </h4>
             <ul className="list-decimal list-inside text-gray-700 text-sm mt-2 space-y-1">
@@ -101,7 +101,7 @@ export const RetreatPrograms = ({ programs }: RetreatProgramsProps) => {
           <div className="flex items-center justify-between pt-6">
             <a
               href="#"
-              className="text-[#B68745] text-sm underline underline-offset-4 hover:opacity-80 transition"
+              className="text-[#C69C4D] text-sm underline underline-offset-4 hover:opacity-80 transition"
             >
               LEARN & BOOK
             </a>

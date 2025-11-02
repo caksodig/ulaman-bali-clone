@@ -16,7 +16,6 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  console.log("VillaShowcase title:", title);
 
   // Check scroll position
   const checkScroll = () => {
@@ -51,26 +50,28 @@ export default function VillaShowcase({ villas, title }: VillaShowcaseProps) {
     <section className="relative py-20 md:py-32 bg-[#EFEBE2]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title - Top Center */}
-        <div
+        <header
           ref={headerRef as RefObject<HTMLHeadingElement>}
-          className="text-center mb-12 md:mb-16"
+          className="my-10 px-8 sm:px-16 lg:px-32 text-center"
         >
-          <h1
-            className={`text-2xl sm:text-3xl md:text-4xl font-light text-[#C69C4D] leading-relaxed max-w-3xl mx-auto transition-all duration-700 ${
-              hasHeaderEntered
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
-            {title}
-          </h1>
-        </div>
+          <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+            <h1
+              className={`text-2xl md:text-4xl font-light text-[#C69C4D] leading-relaxed mx-auto transition-all duration-700 ${
+                hasHeaderEntered
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+            >
+              {title}
+            </h1>
+          </div>
+        </header>
 
         {/* Navigation + Cards Container */}
         <div className="relative flex max-w-6xl mx-auto justify-center items-center">
           {/* Navigation Buttons - Bottom Left */}
           <div
-            className={`gap-4 mb-8 transition-all duration-700  top-1/2 -translate-y-1/2 ${
+            className={`gap-4 mb-8 transition-all duration-700  top-1/2 -translate-y-1/2 hidden lg:block ${
               hasHeaderEntered
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"

@@ -1,0 +1,15 @@
+{
+  "paragraphs": [
+    "All of our villas and rooms have their own unique charm. Ulaman offers a variety of luxurious accommodations, each designed to <em>immerse guests in nature's tranquility and beauty</em>. Our rooms and villas feature eco-friendly materials, luxurious comforts, and open-air living spaces that <em>blend seamlessly with the environment.</em>",
+    "Guests can enjoy private plunge pools, stunning views of rice fields and lakes, and unique architectural designs. Ulaman provides a <em>harmonious blend of luxury and nature</em>, ensuring a relaxing and unforgettable stay."
+  ],
+  "features": [
+    { "icon": "/image/rooms/wifi.avif", "label": "High-Speed Wifi" },
+    { "icon": "/image/rooms/tv.avif", "label": "Netflix + Smart TV" },
+    { "icon": "/image/rooms/ac.avif", "label": "Air Conditioning" },
+    {
+      "icon": "/image/rooms/minibar.avif",
+      "label": "Mini Bar + Espresso Machine"
+    }
+  ]
+}

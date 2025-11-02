@@ -1,0 +1,40 @@
+{
+  "videoSections": [
+    {
+      "id": "spa-experience",
+      "topText": "Ulaman",
+      "bottomText": "Spa",
+      "videoUrl": "/videos/spa-experience.mp4",
+      "videoPoster": "/images/spa-poster.jpg",
+      "ctaText": "VISIT SPA WEBSITE",
+      "ctaLink": "https://spa.ulamanresort.com",
+      "backgroundColor": "#EFEBE2",
+      "textColor": "#343E35",
+      "accentColor": "#C69C4D"
+    },
+    {
+      "id": "wellness-journey",
+      "topText": "Wellness",
+      "bottomText": "Journey",
+      "videoUrl": "/videos/wellness.mp4",
+      "videoPoster": "/images/wellness-poster.jpg",
+      "ctaText": "EXPLORE WELLNESS",
+      "ctaLink": "/wellness",
+      "backgroundColor": "#F5F1E8",
+      "textColor": "#2a3329",
+      "accentColor": "#8B7355"
+    },
+    {
+      "id": "culinary-experience",
+      "topText": "Farm to",
+      "bottomText": "Table",
+      "videoUrl": "/videos/restaurant.mp4",
+      "videoPoster": "/images/restaurant-poster.jpg",
+      "ctaText": "VIEW MENU",
+      "ctaLink": "/dining",
+      "backgroundColor": "#E8E4DC",
+      "textColor": "#1a1a1a",
+      "accentColor": "#D4A574"
+    }
+  ]
+}

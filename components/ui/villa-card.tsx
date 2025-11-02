@@ -80,8 +80,8 @@ export default function VillaCard({
       </div>
 
       {/* Text & CTA */}
-      <div className="py-2 text-[#343E35]">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <div className="py-2">
+        <h3 className="text-xl text-[#C69C4D] font-semibold mb-2">{title}</h3>
         <p className="text-sm mb-4">{description}</p>
         <Link
           href={cta.link}

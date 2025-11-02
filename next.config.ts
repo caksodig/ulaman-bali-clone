@@ -24,6 +24,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "images.prismic.io",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "cdn.ulamanbali.com",
         port: "",
         pathname: "/**",

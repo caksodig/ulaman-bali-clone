@@ -1,9 +1,3 @@
-// types/content.ts
-/**
- * Complete type definitions for Ulaman Bali content
- * Generated based on dataTransformers and component requirements
- */
-
 // ============================================
 // MEDIA & BASIC TYPES
 // ============================================

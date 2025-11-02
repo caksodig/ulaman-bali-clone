@@ -1,0 +1,51 @@
+{
+  "dates": [
+    {
+      "date": "2025-11-15",
+      "price": 7000000,
+      "currency": "IDR",
+      "status": "available"
+    },
+    {
+      "date": "2025-11-16",
+      "price": 7000000,
+      "currency": "IDR",
+      "status": "available"
+    },
+    {
+      "date": "2025-11-17",
+      "price": 7000000,
+      "currency": "IDR",
+      "status": "last-rooms"
+    },
+    {
+      "date": "2025-11-18",
+      "price": 7500000,
+      "currency": "IDR",
+      "status": "available"
+    },
+    {
+      "date": "2025-11-20",
+      "price": 7000000,
+      "currency": "IDR",
+      "status": "minimum-stay"
+    }
+  ],
+  "blockedDates": [
+    "2025-11-03",
+    "2025-11-04",
+    "2025-11-05",
+    "2025-12-24",
+    "2025-12-25"
+  ],
+  "reviews": {
+    "google": {
+      "rating": 4.7,
+      "count": 742
+    },
+    "tripadvisor": {
+      "rating": 4.8,
+      "count": 285
+    }
+  }
+}

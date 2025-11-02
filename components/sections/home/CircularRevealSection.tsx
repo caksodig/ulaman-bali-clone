@@ -82,7 +82,7 @@ export default function CircularRevealSection({
   return (
     <div ref={containerRef} className="relative">
       {/* SECTION 1: Title & CTA (Fixed) */}
-      <div className="sticky top-0 h-screen flex items-center justify-center bg-[#E8E4DC] overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center justify-center bg-[#EFEBE2] overflow-hidden">
         {/* Title & CTA - Fades out */}
         <div
           className="relative z-20 text-center px-4 transition-opacity duration-300"
@@ -155,55 +155,6 @@ export default function CircularRevealSection({
           <div className="absolute inset-0 bg-black/20" />
         </div>
       </div>
-
-      {/* SPACER - Creates scroll distance */}
-      <div className="h-[200vh]" />
-
-      {/* SECTION 2: Next Content (Slides Up) */}
-      <div
-        className="sticky bottom-0 bg-white"
-        style={{
-          transform: `translateY(${nextSectionTranslate}%)`,
-          transition: "transform 0.1s ease-out",
-        }}
-      >
-        <div className="min-h-screen py-20 md:py-32 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            {/* Next section content placeholder */}
-            <div className="text-center space-y-6">
-              <h3 className="text-3xl md:text-4xl font-serif text-stone-900">
-                Luxury Awaits
-              </h3>
-              <p className="text-base md:text-lg text-stone-700 max-w-2xl mx-auto">
-                Continue your journey through paradise
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
-
-/**
- * ANIMATION STAGES:
- *
- * Progress 0 - 0.2:
- * - Title & CTA fully visible
- * - No circle yet
- *
- * Progress 0.2 - 0.5:
- * - Title fades out (0.2-0.3)
- * - Circle expands from small → large (0.2-0.5)
- * - Image fades in inside circle (0.3-0.5)
- *
- * Progress 0.5 - 0.8:
- * - Circle fully expanded (covers screen)
- * - Full image visible
- * - Static hold moment
- *
- * Progress 0.8 - 1.0:
- * - Next section slides up from bottom
- * - Covers the image with white background
- * - Parallax effect
- */

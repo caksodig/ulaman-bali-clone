@@ -4,29 +4,31 @@ import { useState } from "react";
 import data from "@/data/testimonials.json";
 
 export default function TestimonialsSection() {
+  const testimonials = data.testimonials;
   const [current, setCurrent] = useState(0);
-  const testimonial = data.testimonials[current];
+  const total = testimonials.length;
 
-  const prevTestimonial = () =>
-    setCurrent((prev) =>
-      prev === 0 ? data.testimonials.length - 1 : prev - 1
-    );
+  const prevDisabled = current === 0;
+  const nextDisabled = current === total - 1;
 
-  const nextTestimonial = () =>
-    setCurrent((prev) =>
-      prev === data.testimonials.length - 1 ? 0 : prev + 1
-    );
+  const handlePrev = () => {
+    if (!prevDisabled) setCurrent((prev) => prev - 1);
+  };
+
+  const handleNext = () => {
+    if (!nextDisabled) setCurrent((prev) => prev + 1);
+  };
 
   return (
-    <section className="text-[#3B4D41] py-20 px-6 md:px-12">
+    <section className="text-[#3B4D41] py-20 px-6 md:px-12 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
           <div>
-            <h2 className="text-3xl md:text-4xl font-serif text-[#B68745] mb-4">
+            <h2 className="text-3xl md:text-4xl font-serif text-[#C69C4D] mb-4">
               {data.title}
             </h2>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-[#B68745] text-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-[#C69C4D] text-sm">
               {data.reviews.map((review) => (
                 <div key={review.source} className="flex items-center gap-1">
                   <span>{review.rating}</span>
@@ -34,7 +36,7 @@ export default function TestimonialsSection() {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="size-6"
+                    className="size-5"
                   >
                     <path
                       fillRule="evenodd"
@@ -53,14 +55,19 @@ export default function TestimonialsSection() {
           {/* Navigation */}
           <div className="flex gap-3 mt-6 md:mt-0">
             <button
-              onClick={prevTestimonial}
-              className="border border-[#B68745] text-[#B68745] rounded-lg p-3 hover:bg-[#B68745] hover:text-white transition"
+              onClick={handlePrev}
+              disabled={prevDisabled}
+              className={`flex items-center justify-center border border-[#C69C4D] rounded-lg h-18 w-18 transition-all duration-300 ${
+                prevDisabled
+                  ? "opacity-30 cursor-not-allowed"
+                  : "text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="size-6"
+                className="w-6 h-6"
               >
                 <path
                   fillRule="evenodd"
@@ -69,15 +76,21 @@ export default function TestimonialsSection() {
                 />
               </svg>
             </button>
+
             <button
-              onClick={nextTestimonial}
-              className="border border-[#B68745] text-[#B68745] rounded-lg p-3 hover:bg-[#B68745] hover:text-white transition"
+              onClick={handleNext}
+              disabled={nextDisabled}
+              className={`flex items-center justify-center border border-[#C69C4D] rounded-lg h-18 w-18 transition-all duration-300 ${
+                nextDisabled
+                  ? "opacity-30 cursor-not-allowed"
+                  : "text-[#C69C4D] hover:bg-[#C69C4D] hover:text-white"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="size-6"
+                className="w-6 h-6"
               >
                 <path
                   fillRule="evenodd"
@@ -89,23 +102,35 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        <hr className="border-[#B68745]/40 mb-10" />
+        <hr className="border-[#C69C4D]/40 mb-10" />
 
-        {/* Testimonial Content */}
-        <div className="grid md:grid-cols-2 gap-10">
-          <div>
-            <h3 className="text-lg font-medium">
-              {testimonial.name} <br />
-              <span className="font-normal">{testimonial.location}</span>
-            </h3>
-            <p className="text-sm mt-2">{testimonial.date}</p>
-          </div>
+        {/* Testimonial Slider */}
+        <div className="relative w-full overflow-hidden">
+          <div
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{
+              transform: `translateX(-${current * 100}%)`,
+            }}
+          >
+            {testimonials.map((t, index) => (
+              <div
+                key={index}
+                className="min-w-full grid md:grid-cols-2 gap-10 px-2"
+              >
+                <div>
+                  <h3 className="text-lg font-medium">
+                    {t.name} <br />
+                    <span className="font-normal">{t.location}</span>
+                  </h3>
+                  <p className="text-sm mt-2">{t.date}</p>
+                </div>
 
-          <div className="space-y-4">
-            <p className="italic text-lg leading-relaxed">
-              "{testimonial.short}"
-            </p>
-            <p className="text-base leading-relaxed">{testimonial.full}</p>
+                <div className="space-y-4">
+                  <p className="italic text-lg leading-relaxed">"{t.short}"</p>
+                  <p className="text-base leading-relaxed">{t.full}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -2,43 +2,68 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import CallToActionSection from "@/components/ui/CallToActionSection";
 
-// Components - Critical above fold
+
+// ============================================================================
+// CRITICAL - ABOVE THE FOLD (Load Immediately)
+// ============================================================================
 import HeroUlaman from "@/components/sections/home/HeroUlaman";
 import IntroSection from "@/components/sections/home/IntroSection";
 
-// Components - Lazy loaded below fold
+// ============================================================================
+// LAZY LOADED - BELOW THE FOLD
+// ============================================================================
+
 const VillaShowcase = dynamic(
   () => import("@/components/sections/home/VillaShowcase"),
   {
-    ssr: true,
-    loading: () => <div className="h-96 bg-stone-50 animate-pulse" />,
+    loading: () => <div className="h-screen bg-[#EFEBE2] animate-pulse" />,
   }
 );
 
 const CircularReveal = dynamic(() => import("@/components/ui/circural"), {
-  ssr: true,
+  loading: () => <div className="h-screen bg-[#E8E4DC]" />,
 });
 
 const GallerySection = dynamic(
   () => import("@/components/sections/home/GallerySection"),
   {
-    ssr: true,
-    loading: () => <div className="h-96 bg-white animate-pulse" />,
+    loading: () => <div className="h-screen bg-[#EFEBE2] animate-pulse" />,
   }
 );
 
 const ExperienceGrid = dynamic(
   () => import("@/components/sections/home/ExperienceSection"),
   {
-    ssr: true,
-    loading: () => <div className="h-96 bg-stone-50 animate-pulse" />,
+    loading: () => <div className="h-screen bg-[#EFEBE2] animate-pulse" />,
   }
 );
 
-// Data
-import heroData from "@/data/home/hero-sections.json";
+const VideoRevealSection = dynamic(
+  () => import("@/components/ui/VideoReveral"),
+  {
+    loading: () => <div className="h-screen bg-[#EFEBE2] animate-pulse" />,
+  }
+);
 
-// Utilities
+const TestimonialsSection = dynamic(
+  () => import("@/components/ui/TestimonialsSection"),
+  {
+    loading: () => <div className="h-96 bg-white animate-pulse" />,
+  }
+);
+
+const InteractiveMap = dynamic(() => import("@/components/ui/InteractiveMap"), {
+  loading: () => <div className="h-screen bg-[#E8E4DC] animate-pulse" />,
+});
+
+const WeeklySchedule = dynamic(() => import("@/components/ui/WeeklySchedule"), {
+  loading: () => <div className="h-96 bg-[#EFEBE2] animate-pulse" />,
+});
+
+// ============================================================================
+// DATA & UTILITIES
+// ============================================================================
+import heroData from "@/data/home/hero-sections.json";
 import {
   getSectionById,
   transformIntroData,
@@ -48,27 +73,40 @@ import {
   extractMediaData,
   getFallbackHeroData,
 } from "@/lib/dataTransFormers";
-import TestimonialsSection from "@/components/ui/TestimonialsSection";
-import InteractiveMap from "@/components/ui/InteractiveMap";
+import TiraiSection from "@/components/ui/TiraiSection";
 
-// Metadata
+// ============================================================================
+// METADATA
+// ============================================================================
 export const metadata: Metadata = {
-  title: "Ulaman Eco Luxury Resort | Bali Private Villas",
+  title: "Ulaman Eco Luxury Resort | Bali Private Villas & Eco Resort",
   description:
-    "Experience authentic Balinese luxury in harmony with nature at Ulaman Eco Luxury Resort. Private eco-villas, infinity pools, and curated cultural experiences in Ubud.",
+    "Experience authentic Balinese luxury in harmony with nature at Ulaman Eco Luxury Resort. Private eco-villas, infinity pools, and curated cultural experiences in Ubud, Bali.",
   keywords: [
     "Bali resort",
-    "eco luxury",
-    "private villa",
-    "Ubud",
-    "sustainable tourism",
+    "eco luxury resort Bali",
+    "private villa Ubud",
+    "Ubud luxury resort",
+    "sustainable tourism Bali",
+    "eco villas Bali",
+    "Ulaman resort",
+    "Bali honeymoon resort",
   ],
   openGraph: {
-    title: "Ulaman Eco Luxury Resort | Bali",
-    description: "Experience authentic Balinese luxury in harmony with nature",
-    images: ["/images/home-og.jpg"],
+    title: "Ulaman Eco Luxury Resort | Bali Private Villas",
+    description:
+      "Experience authentic Balinese luxury in harmony with nature. Private eco-villas with infinity pools in the heart of Ubud.",
+    images: [
+      {
+        url: "/images/home-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ulaman Eco Luxury Resort - Bali",
+      },
+    ],
     type: "website",
     locale: "en_US",
+    siteName: "Ulaman Eco Luxury Resort",
   },
   twitter: {
     card: "summary_large_image",
@@ -77,11 +115,63 @@ export const metadata: Metadata = {
     images: ["/images/twitter-home.jpg"],
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://ulamanresort.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
-// Main Component
+// ============================================================================
+// JSON-LD STRUCTURED DATA
+// ============================================================================
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Resort",
+  name: "Ulaman Eco Luxury Resort",
+  description:
+    "Experience authentic Balinese luxury in harmony with nature at Ulaman Eco Luxury Resort.",
+  image: "/images/home-og.jpg",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Jl. Raya Keliki",
+    addressLocality: "Ubud",
+    addressRegion: "Bali",
+    postalCode: "80571",
+    addressCountry: "ID",
+  },
+  priceRange: "$$",
+  starRating: {
+    "@type": "Rating",
+    ratingValue: "5",
+  },
+  amenityFeature: [
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Infinity Pool",
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Spa",
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Restaurant",
+    },
+  ],
+};
+
+// ============================================================================
+// MAIN COMPONENT
+// ============================================================================
 export default function HomePage() {
   // Get sections
   const sections = heroData.sections;
@@ -91,7 +181,7 @@ export default function HomePage() {
   const villaSection = getSectionById(sections, "villa-hero");
   const experienceSection = getSectionById(sections, "experience-hero");
 
-  // Get hero data with fallback
+  // Transform hero data
   const media = extractMediaData(heroSection);
   const heroProps = heroSection
     ? {
@@ -107,29 +197,74 @@ export default function HomePage() {
         imageUrl: media?.imageUrl,
         ctaText: heroSection.cta?.text,
         ctaLink: heroSection.cta?.link,
+        showPosterModal: false,
       }
     : getFallbackHeroData();
 
-  // Transform data
+  // Transform section data
   const introData = transformIntroData(introSection);
   const galleryData = transformGalleryData(gallerySection);
   const villaData = transformVillaData(villaSection);
   const experienceData = transformExperienceData(experienceSection);
 
+  // Map hotspots data
+  const mapHotspots = [
+    {
+      id: "villa-1",
+      name: "Pool Villa",
+      description: "Luxury private villa with infinity pool",
+      icon: "villa" as const,
+      position: { x: 30, y: 45 },
+      link: "/villas/pool-villa",
+    },
+    {
+      id: "restaurant",
+      name: "Main Restaurant",
+      description: "Fine dining with panoramic views",
+      icon: "restaurant" as const,
+      position: { x: 50, y: 35 },
+      link: "/dining",
+    },
+    {
+      id: "spa",
+      name: "Spa & Wellness",
+      description: "Traditional Balinese spa treatments",
+      icon: "spa" as const,
+      position: { x: 70, y: 50 },
+      link: "/spa",
+    },
+  ];
+
   return (
     <>
-      {/* HERO SECTION - Critical, loads immediately */}
-      <HeroUlaman {...heroProps} />
+      {/* JSON-LD for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-      {/* INTRO SECTION - Above fold */}
+      {/* ================================================================ */}
+      {/* ABOVE THE FOLD - Critical Path */}
+      {/* ================================================================ */}
+
+      <HeroUlaman
+        title="Ulaman Eco Luxury Resort"
+        posterUrl="/image/new-figure.avif"
+        videoType="youtube"
+        videoId="7moIJ0LIwPc"
+        showPosterModal={true}
+      />
+
       {introData && <IntroSection data={introData} />}
 
-      {/* GALLERY SECTION - Lazy loaded */}
+      {/* ================================================================ */}
+      {/* BELOW THE FOLD - Lazy Loaded */}
+      {/* ================================================================ */}
+
       {galleryData && galleryData.images.length > 0 && (
         <GallerySection data={galleryData} />
       )}
 
-      {/* VILLA SHOWCASE - Lazy loaded */}
       {villaData.length > 0 && (
         <VillaShowcase
           villas={villaData}
@@ -137,7 +272,10 @@ export default function HomePage() {
         />
       )}
 
-      {/* CIRCULAR REVEAL SECTION - Stunning scroll animation */}
+      {/* ================================================================ */}
+      {/* CIRCULAR REVEAL WITH EXPERIENCE SECTION */}
+      {/* ================================================================ */}
+
       <CircularReveal
         title="Experience a blend of nature, comfort and luxury like never before."
         cta={{
@@ -145,41 +283,63 @@ export default function HomePage() {
           link: "/reservations",
         }}
         image="/circular.avif"
-        backgroundColor="#E8E4DC"
+        backgroundColor="#EFEBE2"
         textColor="#C69C4D"
-        scrollHeight={200}
-      >
-        {/* EXPERIENCE GRID - Lazy loaded */}
-        {experienceData.length > 0 && (
-          <ExperienceGrid
-            experiences={experienceData}
-            title="Book one of our special packages for a getaway you'll never forget."
-          />
-        )}
-      </CircularReveal>
+        scrollHeight={150}
+      ></CircularReveal>
+      {experienceData.length > 0 && (
+        <ExperienceGrid
+          experiences={experienceData}
+          title="Book one of our special packages for a getaway you'll never forget."
+        />
+      )}
+
+      <TiraiSection
+        backgroundColor="#EFEBE2"
+        accentColor="#C69C4D"
+        textColor="##343e35"
+      />
+
+      {/* ================================================================ */}
+      {/* VIDEO REVEAL SECTION - Spa Experience */}
+      {/* ================================================================ */}
+
+      <VideoRevealSection
+        topText="Balance - Relaxation"
+        bottomText="Renewal - Healin"
+        videoUrl="/videos/spa-experience.webm"
+        videoPoster="/image/cover-spa.avif"
+        ctaText="VISIT SPA WEBSITE"
+        ctaLink="https://riversidespabyulaman.com/"
+        backgroundColor="#EFEBE2"
+        textColor="#343E35"
+        accentColor="#C69C4D"
+        preloadVideo={true}
+      />
+
+      {/* ================================================================ */}
+      {/* ADDITIONAL SECTIONS */}
+      {/* ================================================================ */}
+
       <InteractiveMap
         title="Discover Ulaman from above"
         instruction="Tap on an icon"
         mapImage="/image/ulaman-map.jpg"
-        hotspots={[
-          {
-            id: "villa-1",
-            name: "Pool Villa",
-            description: "Luxury private villa",
-            icon: "villa",
-            position: { x: 30, y: 45 },
-            link: "/villa/pool-villa",
-          },
-          // More hotspots...
-        ]}
-        backgroundColor="#E8E4DC"
+        hotspots={mapHotspots}
+        backgroundColor="#EFEBE2"
         accentColor="#C69C4D"
       />
+
       <TestimonialsSection />
+
+      <WeeklySchedule />
+
       <CallToActionSection pageKey="home" />
     </>
   );
 }
 
-// ISR Configuration - Revalidate every hour
+// ============================================================================
+// ISR CONFIGURATION
+// ============================================================================
 export const revalidate = 3600;

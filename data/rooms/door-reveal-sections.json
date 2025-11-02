@@ -1,0 +1,37 @@
+{
+  "doorRevealSections": [
+    {
+      "id": "villa-reveal",
+      "title": "Discover our eco Luxury State-of-the-Art Villas.",
+      "subtitle": "ARCHITECTURAL EXCELLENCE",
+      "image": "/images/villa-interior.jpg",
+      "imageAlt": "Ulaman Villa Interior - Eco Luxury Architecture",
+      "nextSectionBg": "#ffffff",
+      "backgroundColor": "#EFEBE2",
+      "textColor": "#C69C4D",
+      "scrollHeight": 300
+    },
+    {
+      "id": "spa-reveal",
+      "title": "Indulge in Holistic Wellness & Serenity.",
+      "subtitle": "BALINESE SPA SANCTUARY",
+      "image": "/images/spa-interior.jpg",
+      "imageAlt": "Ulaman Spa - Traditional Balinese Treatments",
+      "nextSectionBg": "#F5F1E8",
+      "backgroundColor": "#E8E4DC",
+      "textColor": "#8B7355",
+      "scrollHeight": 300
+    },
+    {
+      "id": "dining-reveal",
+      "title": "Savor Farm-to-Table Culinary Excellence.",
+      "subtitle": "ORGANIC DINING EXPERIENCE",
+      "image": "/images/restaurant-interior.jpg",
+      "imageAlt": "Ulaman Restaurant - Farm to Table Dining",
+      "nextSectionBg": "#ffffff",
+      "backgroundColor": "#F5F5F0",
+      "textColor": "#D4A574",
+      "scrollHeight": 250
+    }
+  ]
+}

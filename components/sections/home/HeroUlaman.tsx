@@ -9,12 +9,22 @@ import Image from "next/image";
 
 interface HeroUlamanProps {
   title: string;
+  posterUrl: string; // Required - always show poster first
   videoUrl?: string;
   videoType?: "native" | "youtube";
   videoId?: string;
-  imageUrl?: string;
   showPosterModal?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
 }
+
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
+const SCROLL_DEBOUNCE_MS = 16; // ~60fps
+const FADE_THRESHOLD = 0.5; // 50% of hero height
+const YOUTUBE_IFRAME_DELAY = 300; // ms
 
 // ============================================================================
 // MAIN COMPONENT
@@ -22,49 +32,59 @@ interface HeroUlamanProps {
 
 export default function HeroUlaman({
   title,
+  posterUrl,
   videoUrl,
   videoType = "native",
   videoId,
-  imageUrl,
   showPosterModal = true,
+  ctaText = "Book Now",
+  ctaLink = "https://www.book-secure.com/?HotelName=ASIAIDHTLUlamanEcoLu&hname=ASIAIDHTLUlamanEcoLu&arrival=2025-11-15&adults1=1&campaignId=41350&accessCode=CAMP-Specialopening&redir=BIZ-so5523q0o4&rt=1761933766&property=idbal31691&code=CAMP-Specialopening&s=results",
 }: HeroUlamanProps) {
+  // ============================================================================
+  // STATE
+  // ============================================================================
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [posterOpen, setPosterOpen] = useState(showPosterModal && !!imageUrl);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const [posterModalOpen, setPosterModalOpen] = useState(showPosterModal);
+  const [posterImageLoaded, setPosterImageLoaded] = useState(false);
 
+  // ============================================================================
+  // REFS
+  // ============================================================================
   const heroRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // ============================================================================
-  // PRECONNECT TO YOUTUBE (Critical Performance Optimization!)
+  // YOUTUBE PRECONNECT (Performance Critical)
   // ============================================================================
-
   useEffect(() => {
-    if (videoType === "youtube" && videoId) {
-      // Preconnect to YouTube domains
-      const preconnectLinks = [
-        "https://www.youtube-nocookie.com",
-        "https://www.youtube.com",
-        "https://i.ytimg.com",
-      ];
+    if (videoType !== "youtube" || !videoId) return;
 
-      preconnectLinks.forEach((href) => {
-        const link = document.createElement("link");
-        link.rel = "preconnect";
-        link.href = href;
-        link.crossOrigin = "anonymous";
-        document.head.appendChild(link);
-      });
-    }
+    const preconnectDomains = [
+      "https://www.youtube-nocookie.com",
+      "https://www.youtube.com",
+      "https://i.ytimg.com",
+    ];
+
+    const links = preconnectDomains.map((href) => {
+      const link = document.createElement("link");
+      link.rel = "preconnect";
+      link.href = href;
+      link.crossOrigin = "anonymous";
+      document.head.appendChild(link);
+      return link;
+    });
+
+    return () => {
+      links.forEach((link) => document.head.removeChild(link));
+    };
   }, [videoType, videoId]);
 
   // ============================================================================
-  // SCROLL HANDLER (DEBOUNCED)
+  // SCROLL HANDLER (Debounced & Optimized)
   // ============================================================================
-
   const handleScroll = useCallback(() => {
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
@@ -75,14 +95,16 @@ export default function HeroUlaman({
       setScrollY(currentScrollY);
 
       const heroHeight = heroRef.current?.offsetHeight || 0;
-      const fadeThreshold = heroHeight * 0.5;
+      const fadeThreshold = heroHeight * FADE_THRESHOLD;
 
       setIsVisible(currentScrollY <= fadeThreshold);
-    }, 16); // ~60fps
+    }, SCROLL_DEBOUNCE_MS);
   }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (scrollTimeoutRef.current) {
@@ -92,42 +114,39 @@ export default function HeroUlaman({
   }, [handleScroll]);
 
   // ============================================================================
-  // VIDEO LOAD HANDLERS
+  // VIDEO HANDLERS
   // ============================================================================
-
   const handleVideoCanPlay = useCallback(() => {
-    setVideoLoaded(true);
+    setVideoReady(true);
   }, []);
 
   const handleIframeLoad = useCallback(() => {
-    // Small delay to ensure YouTube player is ready
     setTimeout(() => {
-      setVideoLoaded(true);
-    }, 300);
+      setVideoReady(true);
+    }, YOUTUBE_IFRAME_DELAY);
   }, []);
 
-  const handlePosterClose = useCallback(() => {
-    setPosterOpen(false);
+  // ============================================================================
+  // MODAL HANDLERS
+  // ============================================================================
+  const closePosterModal = useCallback(() => {
+    setPosterModalOpen(false);
   }, []);
 
   // ============================================================================
   // COMPUTED VALUES
   // ============================================================================
-
   const opacity = Math.max(1 - scrollY / 500, 0);
   const translateY = scrollY * 0.5;
 
-  const embedUrl =
+  const youtubeEmbedUrl =
     videoType === "youtube" && videoId
       ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&start=5`
       : null;
 
-  const showBackgroundBlur = posterOpen && showPosterModal;
-
   // ============================================================================
   // RENDER
   // ============================================================================
-
   return (
     <>
       {/* ================================================================== */}
@@ -135,83 +154,82 @@ export default function HeroUlaman({
       {/* ================================================================== */}
       <section
         ref={heroRef}
-        className="relative w-full h-screen min-h-screen overflow-hidden bg-neutral-900"
+        className="relative w-full h-screen overflow-hidden bg-neutral-900"
       >
-        {/* ============================================================== */}
-        {/* BACKGROUND VIDEO/IMAGE LAYER */}
-        {/* ============================================================== */}
+        {/* Background Content Container */}
         <div
-          className={`absolute inset-0 w-full h-full transition-all duration-500 ${
-            showBackgroundBlur ? "blur-sm scale-105" : "blur-0 scale-100"
+          className={`absolute inset-0 transition-all duration-500 ${
+            posterModalOpen ? "blur-sm scale-105" : "blur-0 scale-100"
           }`}
         >
-          {/* Fallback Background Image (Always show for instant load) */}
-          {imageUrl && (
-            <div className="absolute inset-0 w-full h-full">
-              <Image
-                src={imageUrl}
-                alt={title}
-                fill
-                priority
-                quality={85}
-                className={`object-cover transition-opacity duration-700 ${
-                  imageLoaded ? "opacity-100" : "opacity-0"
-                } ${videoLoaded ? "opacity-0" : "opacity-100"}`}
-                sizes="100vw"
-                onLoad={() => setImageLoaded(true)}
-              />
-            </div>
-          )}
+          {/* ============================================================ */}
+          {/* POSTER IMAGE (Always Primary) */}
+          {/* ============================================================ */}
+          <div className="absolute inset-0">
+            <Image
+              src={posterUrl}
+              alt={title}
+              fill
+              priority
+              quality={90}
+              sizes="100vw"
+              className={`object-cover transition-opacity duration-700 ${
+                posterImageLoaded ? "opacity-100" : "opacity-0"
+              } ${videoReady ? "opacity-0" : "opacity-100"}`}
+              onLoad={() => setPosterImageLoaded(true)}
+            />
+          </div>
 
-          {/* Native Video */}
-          {videoType === "native" && videoUrl && (
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster={imageUrl}
-              onCanPlay={handleVideoCanPlay}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-                videoLoaded ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <source src={videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
+          {/* ============================================================ */}
+          {/* VIDEO LAYER (Appears after poster loads) */}
+          {/* ============================================================ */}
+          {posterImageLoaded && (
+            <>
+              {/* Native Video */}
+              {videoType === "native" && videoUrl && (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  onCanPlay={handleVideoCanPlay}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                    videoReady ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                </video>
+              )}
 
-          {/* YouTube Iframe (Load immediately, no delay!) */}
-          {videoType === "youtube" && embedUrl && (
-            <div className="absolute inset-0 w-full h-full">
-              <iframe
-                src={embedUrl}
-                title={title}
-                onLoad={handleIframeLoad}
-                allow="autoplay; encrypted-media"
-                className={`absolute top-1/2 left-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-700 ${
-                  videoLoaded ? "opacity-100" : "opacity-0"
-                }`}
-                style={{ border: "none" }}
-              />
-            </div>
+              {/* YouTube Embed */}
+              {videoType === "youtube" && youtubeEmbedUrl && (
+                <iframe
+                  src={youtubeEmbedUrl}
+                  title={title}
+                  onLoad={handleIframeLoad}
+                  allow="autoplay; encrypted-media"
+                  className={`absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-1000 ${
+                    videoReady ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{ border: "none" }}
+                />
+              )}
+            </>
           )}
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none" />
         </div>
 
-        {/* ============================================================== */}
-        {/* LOADING INDICATOR */}
-        {/* ============================================================== */}
-        {!videoLoaded && !imageLoaded && (
+        {/* ============================================================ */}
+        {/* LOADING STATE */}
+        {/* ============================================================ */}
+        {!posterImageLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-neutral-900 z-10">
             <div className="flex flex-col items-center gap-4">
-              {/* Spinner */}
               <div className="w-12 h-12 border-4 border-[#C69C4D]/30 border-t-[#C69C4D] rounded-full animate-spin" />
-              {/* Loading Text */}
               <p className="text-white/70 text-sm tracking-wide animate-pulse">
                 Loading experience...
               </p>
@@ -219,10 +237,12 @@ export default function HeroUlaman({
           </div>
         )}
 
-        {/* Scroll Indicator */}
-        {isVisible && videoLoaded && (
+        {/* ============================================================ */}
+        {/* SCROLL INDICATOR */}
+        {/* ============================================================ */}
+        {isVisible && posterImageLoaded && (
           <div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce transition-opacity duration-300"
             style={{ opacity }}
           >
             <div className="flex flex-col items-center gap-2 text-white/80">
@@ -246,42 +266,42 @@ export default function HeroUlaman({
       </section>
 
       {/* ================================================================== */}
-      {/* POSTER MODAL (Optional) */}
+      {/* POSTER MODAL */}
       {/* ================================================================== */}
-      {posterOpen && imageUrl && showPosterModal && (
+      {posterModalOpen && showPosterModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center px-4"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="poster-title"
+          aria-labelledby="poster-modal"
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-transparent duration-300"
-            onClick={handlePosterClose}
+            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+            onClick={closePosterModal}
             aria-hidden="true"
           />
 
           {/* Modal Content */}
-          <div className="relative z-50 flex items-center justify-center max-h-[90vh] max-w-[90vw] animate-fadeIn">
-            <div className="relative w-full max-w-fit mt-20">
+          <div className="relative z-50 max-h-[90vh] max-w-[90vw] animate-fadeIn">
+            <div className="relative w-full max-w-fit">
               {/* Poster Image */}
-              <div className="aspect-[10/12.5] w-full rounded-tl-2xl rounded-br-2xl border-4 border-[#C69C4D] max-w-fit max-h-[50vh] xl:max-h-[60vh]">
+              <div className="relative aspect-[10/12.5] max-h-[70vh] rounded-tl-3xl rounded-br-3xl border-4 border-[#C69C4D] shadow-2xl overflow-hidden">
                 <Image
-                  src={imageUrl}
+                  src={posterUrl}
                   alt={title}
                   width={800}
-                  height={1200}
-                  className="rounded-tl-2xl rounded-br-2xl w-full h-full object-cover"
+                  height={1000}
+                  className="w-full h-full object-cover"
                   priority
-                  quality={90}
+                  quality={95}
                 />
               </div>
 
               {/* Close Button */}
               <button
-                onClick={handlePosterClose}
-                className="absolute -top-3 -right-3 w-10 h-10 flex items-center justify-center text-white bg-[#C69C4D] rounded-full transition-all duration-300 hover:bg-[#b28844] hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C69C4D] z-50"
+                onClick={closePosterModal}
+                className="absolute -top-4 -right-4 w-12 h-12 flex items-center justify-center text-white bg-[#C69C4D] rounded-full shadow-lg transition-all duration-300 hover:bg-[#b28844] hover:scale-110 hover:rotate-90 focus:outline-none focus:ring-4 focus:ring-[#C69C4D]/50 z-10"
                 aria-label="Close poster"
               >
                 <svg
@@ -289,7 +309,7 @@ export default function HeroUlaman({
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                 >
                   <path
                     strokeLinecap="round"
@@ -298,19 +318,25 @@ export default function HeroUlaman({
                   />
                 </svg>
               </button>
-              <nav className="absolute top-full pt-5 left-0">
-                <a
-                  className=" rounded-tr-xl rounded-bl-xl border border-brand bg-[#C69C4D] text-white hover:bg-white hover:text-[#C69C4D] py-2.5 px-6 leading-none hover:bg-light hover:text-brand"
-                  href=""
-                >
-                  Book Now
-                </a>
-              </nav>
 
-              {/* Optional: "Skip" text hint */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm">
+              {/* CTA Button */}
+              {ctaText && ctaLink && (
+                <div className="absolute -bottom-16 left-0">
+                  <a
+                    href={ctaLink}
+                    className="inline-block rounded-tr-xl rounded-bl-xl border-2 border-[#C69C4D] bg-[#C69C4D] text-white px-8 py-3 font-medium tracking-wide transition-all duration-300 hover:bg-white hover:text-[#C69C4D] hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#C69C4D]/50"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {ctaText}
+                  </a>
+                </div>
+              )}
+
+              {/* Skip Hint */}
+              <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm whitespace-nowrap">
                 Click anywhere to continue
-              </div>
+              </p>
             </div>
           </div>
         </div>

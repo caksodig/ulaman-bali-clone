@@ -1,0 +1,13 @@
+{
+  "images": [
+    "/image/facilities/Yoga.avif",
+    "/image/facilities/Gym.avif",
+    "/image/facilities/Spa.avif",
+    "/image/facilities/TenisCourt.avif"
+  ],
+  "title": {
+    "line1": "Discover the range of resort",
+    "line2": "facilities available to you.",
+    "paragraph": "Looking to relax or get moving?"
+  }
+}
