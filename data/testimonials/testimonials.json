@@ -1,0 +1,22 @@
+[
+  {
+    "id": "01",
+    "name": "Michael Reza Esfandiari & Sharon Ann Conroy",
+    "quote": "...Serene is probably the word that comes to mind. It's just so calming, so fulfilling. The sound healing yesterday was just amazing, I honestly don't think I've ever been so relaxed. People would be fortunate to come and experience what we have experienced...",
+    "caption": "Stayed In The Jungle Garden Pool Villa In March 2024.",
+    "video": {
+      "src": "/videos/testimonials/testi1.webm",
+      "poster": "/image/testimonials/testi1.avif"
+    }
+  },
+  {
+    "id": "02",
+    "name": "Brett Leavit & Frances Mouser",
+    "quote": "...They have a deep cold plunge, they have a hot tub, I think it may be one the first places we had a hot tub, as well as a sauna and steam room, just the whole spa together was a really great experience. They have everything you need here, so you don't have to go anywhere else...",
+    "caption": "Stayed In The Avatar Tree House In May 2024",
+    "video": {
+      "src": "/videos/testimonials/testi2.webm",
+      "poster": "/image/testimonials/testi2.avif"
+    }
+  }
+]
